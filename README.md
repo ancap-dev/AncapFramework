@@ -2,7 +2,9 @@
 
 # AncapFramework
 
-Фреймворк для Bukkit-разработки. 
+![Codacy Badge](https://img.shields.io/codacy/grade/85187fe25a954ba7b9331d1fe51deb25?style=flat-square) ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/PukPukov/afrmwrk-repo-for-codeclimate?style=flat-square) ![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/PukPukov/afrmwrk-repo-for-codeclimate?style=flat-square) ![Lines of code](https://img.shields.io/tokei/lines/github/ancap-dev/AncapFramework?style=flat-square)
+
+Фреймворк для Bukkit-разработки с восхитительно чистым ООП-кодом.
 
 
 # Обзор
@@ -12,7 +14,7 @@
 ## Модуль AncapMisc
 Данный модуль включает в себя набор различных объектов. Модуль не документирован, так как, в основном, код понятен без документации.
 ### Placeholder
-Самая интересная часть AncapMisc. Набор утилит для работы с плейсхолдерами. Активно используется в AncapConfiguration.
+Самая интересная часть AncapMisc. Набор утилит для работы с плейсхолдерами. Активно используется в ConfigurationAPI.
 ### Balance
 Набор утилит для работы с экономикой. Включает в себя Balance, Wallet, Currency и их билдеры с фабриками.
 
