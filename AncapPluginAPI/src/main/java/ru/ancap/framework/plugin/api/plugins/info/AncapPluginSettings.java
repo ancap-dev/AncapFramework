@@ -3,7 +3,7 @@ package ru.ancap.framework.plugin.api.plugins.info;
 import ru.ancap.framework.plugin.api.configuration.AncapConfiguration;
 import ru.ancap.framework.plugin.api.configuration.language.Language;
 import ru.ancap.framework.plugin.api.configuration.language.PreAncapLanguage;
-import ru.ancap.misc.strings.hexable.AncapIntegerString;
+import ru.ancap.misc.strings.integer.AncapIntegerString;
 
 import java.util.HashSet;
 import java.util.List;
