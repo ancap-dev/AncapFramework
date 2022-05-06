@@ -1,4 +1,4 @@
-package ru.ancap.misc.strings.hexable;
+package ru.ancap.misc.strings.integer;
 
 public interface IntegerString {
 
