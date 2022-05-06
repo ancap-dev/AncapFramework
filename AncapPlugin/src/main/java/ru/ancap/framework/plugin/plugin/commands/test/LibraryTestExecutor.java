@@ -4,8 +4,8 @@ import ru.ancap.framework.plugin.api.configuration.language.Language;
 import ru.ancap.framework.plugin.api.incubator.commands.AncapCommand;
 import ru.ancap.framework.plugin.api.incubator.commands.AncapCommandExecutor;
 import ru.ancap.framework.plugin.api.incubator.commands.AncapConsoleCommand;
-import ru.ancap.framework.plugin.api.packetapi.AncapPacketReceiver;
-import ru.ancap.framework.plugin.api.packetapi.receiver.PacketReceiver;
+import ru.ancap.framework.plugin.api.packet.api.AncapPacketReceiver;
+import ru.ancap.framework.plugin.api.packet.api.receiver.PacketReceiver;
 import ru.ancap.framework.plugin.plugin.AncapLibrary;
 
 import java.util.List;

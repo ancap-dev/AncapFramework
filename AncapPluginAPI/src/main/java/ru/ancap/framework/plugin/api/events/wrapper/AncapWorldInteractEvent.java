@@ -4,7 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.player.PlayerBucketEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,12 +22,6 @@ public class AncapWorldInteractEvent extends AncapEvent implements Cancellable {
         this.event = event;
         this.player = player;
         this.loc = loc;
-    }
-
-    public AncapWorldInteractEvent(PlayerBucketEvent e) {
-        this.event = e;
-        this.player = e.getPlayer();
-        this.loc = e.getBlock().getLocation();
     }
 
     @NotNull

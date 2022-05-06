@@ -1,7 +1,7 @@
 package ru.ancap.framework.plugin.plugin.configuration;
 
 import ru.ancap.framework.plugin.api.configuration.AncapConfiguration;
-import ru.ancap.framework.plugin.api.packetapi.packet.Packet;
+import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
 import ru.ancap.framework.plugin.coreplugin.CoreConfiguration;
 import ru.ancap.misc.placeholder.PlaceholderSource;
 
@@ -10,9 +10,9 @@ import java.util.List;
 public class AncapLibraryMessageConfiguration extends AncapConfiguration implements CoreConfiguration {
 
     protected static class Placeholder {
-        public static final String INVALID = "invalid";
-        public static final String ACCEPTED = "accepted";
-        public static final String PERMISSION = "permission";
+        public static final String INVALID = "INVALID";
+        public static final String ACCEPTED = "ACCEPTED";
+        public static final String PERMISSION = "PERMISSION";
     }
 
     protected static class Path {

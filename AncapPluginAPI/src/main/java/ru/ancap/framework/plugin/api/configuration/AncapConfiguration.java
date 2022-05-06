@@ -9,8 +9,8 @@ import ru.ancap.framework.plugin.api.configuration.exception.InvalidConfiguratio
 import ru.ancap.framework.plugin.api.configuration.exception.InvalidConfigurationPacketException;
 import ru.ancap.framework.plugin.api.configuration.packet.AncapPacketConfigurationSection;
 import ru.ancap.framework.plugin.api.configuration.packet.PacketConfigurationSection;
-import ru.ancap.framework.plugin.api.packetapi.packet.Packet;
-import ru.ancap.framework.plugin.api.packetapi.packet.builder.AncapPacketBuilderSource;
+import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
+import ru.ancap.framework.plugin.api.packet.api.packet.builder.AncapPacketBuilderSource;
 import ru.ancap.misc.economy.balance.Balance;
 import ru.ancap.misc.economy.balance.factory.BalanceFactory;
 import ru.ancap.misc.placeholder.Placeholder;
@@ -112,7 +112,7 @@ public abstract class AncapConfiguration extends AncapBukkitConfiguration implem
     }
 
     @Override
-    public String getString(@NotNull String path) {
+    public @NotNull String getString(@NotNull String path) {
         return this.getString(path, this);
     }
 
@@ -121,7 +121,7 @@ public abstract class AncapConfiguration extends AncapBukkitConfiguration implem
     }
 
     private AncapPlaceholderedConfigurationSection getPlaceholderedConfigurationSection(PlaceholderSource source) {
-        return new AncapPlaceholderedConfigurationSection(this, source);
+        return new AncapPlaceholderedConfigurationSection(super.getConfigurationSection(), source);
     }
 
     private AncapPlaceholderedConfigurationSection getPlaceholderedConfigurationSection(@NotNull String path, PlaceholderSource source) {

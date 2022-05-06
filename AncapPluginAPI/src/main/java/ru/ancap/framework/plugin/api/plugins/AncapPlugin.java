@@ -41,7 +41,6 @@ public abstract class AncapPlugin extends AncapMinimalisticPlugin {
 
     @Override
     public final void onDisable() {
-        throw new UnsupportedOperationException();
     }
 
     public AncapPluginSettings getSettings() {

@@ -5,6 +5,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.plugin.PluginManager;
 import ru.ancap.framework.plugin.api.events.wrapper.AncapVillagerHealEvent;
@@ -20,7 +21,7 @@ public class VillagerHealListener extends AncapListener {
         super();
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.LOW)
     public void onEntityInteract(PlayerInteractEntityEvent e) {
         if (this.isHealingVillagerAt(e)) {
             this.throwEvent(e, e.getPlayer(), (Villager) e.getRightClicked());

@@ -1,7 +1,7 @@
 package ru.ancap.framework.plugin.api.incubator.commands.exceptions;
 
-import ru.ancap.framework.plugin.api.packetapi.packet.Sendable;
-import ru.ancap.framework.plugin.api.packetapi.receiver.PacketReceiver;
+import ru.ancap.framework.plugin.api.packet.api.packet.Sendable;
+import ru.ancap.framework.plugin.api.packet.api.receiver.PacketReceiver;
 
 public abstract class AncapCommandException extends HandleableException {
 

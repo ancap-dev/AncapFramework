@@ -1,6 +1,7 @@
 package ru.ancap.framework.plugin.plugin.events.listeners.wrapper;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.PluginManager;
@@ -17,14 +18,14 @@ public class ExplodeListener extends AncapListener {
         super();
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.LOW)
     public void explodeEvent(EntityExplodeEvent e) {
         this.throwEvent(
                 new AncapExplodeEvent(e)
         );
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.LOW)
     public void explodeEvent(BlockExplodeEvent e) {
         this.throwEvent(
                 new AncapExplodeEvent(e)

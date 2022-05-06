@@ -1,6 +1,6 @@
 package ru.ancap.framework.plugin.api.incubator.commands.exceptions;
 
-import ru.ancap.framework.plugin.api.packetapi.packet.Sendable;
+import ru.ancap.framework.plugin.api.packet.api.packet.Sendable;
 
 public class AncapCommandExceptionImpl extends AncapCommandException {
 

@@ -2,9 +2,7 @@ package ru.ancap.framework.plugin.api.plugins;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 
 public class AncapPluginResourceSource implements ResourceSource {
@@ -28,6 +26,13 @@ public class AncapPluginResourceSource implements ResourceSource {
     @Override
     public InputStream getResource(String fileName) {
         File file = new File(plugin.getDataFolder(), fileName);
+        if (file.exists()) {
+            try {
+                return new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
         InputStream stream = plugin.getResource(fileName);
         this.prepareFiles(file, stream);
         return plugin.getResource(fileName);
@@ -35,18 +40,15 @@ public class AncapPluginResourceSource implements ResourceSource {
 
     private void prepareFiles(File file, InputStream stream) {
         if (saveFiles) {
-            this.prepareStreamSourceFile(file, stream);
-        }
-    }
-
-    private void prepareStreamSourceFile(File file, InputStream stream) {
-        if (!file.exists()) {
             this.createFile(file, stream);
         }
     }
 
     private void createFile(File file, InputStream stream) {
         try (stream) {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
             Files.copy(stream, file.toPath());
         } catch (IOException e) {
             throw new RuntimeException(e);

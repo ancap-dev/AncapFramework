@@ -17,7 +17,7 @@ public class BlockClickListener extends AncapListener {
         super();
     }
 
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler (priority = EventPriority.LOW)
     public void on(PlayerInteractEvent e) {
         if (e.getClickedBlock() == null) {
             return;

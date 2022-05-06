@@ -10,6 +10,11 @@ public class BadConfigurationException extends RuntimeException {
         this.reason = reason;
     }
 
+    @Override
+    public String getMessage() {
+        return "|"+this.getPath()+"| "+this.getReason();
+    }
+
     public String getPath() {
         return this.path;
     }

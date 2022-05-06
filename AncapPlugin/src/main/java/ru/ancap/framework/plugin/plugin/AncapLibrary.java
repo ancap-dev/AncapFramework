@@ -11,7 +11,10 @@ import ru.ancap.framework.plugin.plugin.commands.test.LibraryTestExecutor;
 import ru.ancap.framework.plugin.plugin.configuration.AncapLibraryConfiguration;
 import ru.ancap.framework.plugin.plugin.configuration.AncapLibraryMultiLanguageMessageConfiguration;
 import ru.ancap.framework.plugin.plugin.events.listeners.addition.BlockClickListener;
-import ru.ancap.framework.plugin.plugin.events.listeners.wrapper.*;
+import ru.ancap.framework.plugin.plugin.events.listeners.wrapper.ExplodeListener;
+import ru.ancap.framework.plugin.plugin.events.listeners.wrapper.ProtectListener;
+import ru.ancap.framework.plugin.plugin.events.listeners.wrapper.SelfDestructListener;
+import ru.ancap.framework.plugin.plugin.events.listeners.wrapper.VillagerHealListener;
 import ru.ancap.framework.plugin.plugin.events.timer.AncapTimerEventListener;
 import ru.ancap.framework.plugin.plugin.events.timer.heartbeat.AncapHeartbeat;
 
