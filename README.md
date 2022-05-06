@@ -20,8 +20,8 @@
 Основной модуль фреймворка.
 ### ConfigurationAPI
 API для работы с файлами конфигурации плагина. Поддерживает многоязыковые конфигурации, внутренние плейсходеры, а также имеет множество других маленьких удобных плюшек. Пример файла конфигурации:
-![image](https://github.com/ancap-dev/AncapFramework/raw/master/META-INF/config1.png)
-![image](https://github.com/ancap-dev/AncapFramework/raw/master/META-INF/config2.png)
+![image](https://github.com/ancap-dev/AncapFramework/blob/main/META-INF/config1.png)
+![image](https://github.com/ancap-dev/AncapFramework/blob/main/META-INF/config2.png)
 ### EventAPI
 Null-безопасные обёртки для баккитовских ивентов. Больше никаких NullPointerException, instanceof и ((Player) projectile). Как бонус - AncapHeartbeat и три таймера.
 ### CommandAPI
