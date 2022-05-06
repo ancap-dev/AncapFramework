@@ -3,21 +3,21 @@ invalid_args_count:
     - "%cant_operate_command%"
     - "&cIncorrect command arguments count."
     - "&cInserted &с&n%invalid%&c arguments, when needed &с&n%accepted%&c"
-  sound: %error_sound%
+  sound: "%error_sound%"
 
 invalid_arg:
   messages:
     - "%cant_operate_command%"
     - "&cIncorrect argument \"&с&n%invalid%&c\"."
     - "&cAccepted values: %accepted%"
-  sound: %error_sound%
+  sound: "%error_sound%"
 
 no_perms:
   messages:
     - "%cant_operate_command%"
     - "&cNot enough rights to perform this action"
     - "&cTo perform this action, you need to have permission \"&с&n%permission%&c\"."
-  sound: %error_sound%
+  sound: "%error_sound%"
 
-cant_operate_command: "&cThe command cannot be executed:"
-error_sound: "random.anvil_land"
+CANT_OPERATE_COMMAND: "&cThe command cannot be executed:"
+ERROR_SOUND: "block.anvil.land"

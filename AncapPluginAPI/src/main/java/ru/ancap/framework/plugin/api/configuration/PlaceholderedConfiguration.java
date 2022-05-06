@@ -2,7 +2,7 @@ package ru.ancap.framework.plugin.api.configuration;
 
 import ru.ancap.framework.plugin.api.configuration.exception.InvalidConfigurationBalanceException;
 import ru.ancap.framework.plugin.api.configuration.exception.InvalidConfigurationPacketException;
-import ru.ancap.framework.plugin.api.packetapi.packet.Packet;
+import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
 import ru.ancap.misc.economy.balance.Balance;
 import ru.ancap.misc.placeholder.PlaceholderSource;
 import ru.ancap.misc.placeholder.exception.NoSuchPlaceholderException;

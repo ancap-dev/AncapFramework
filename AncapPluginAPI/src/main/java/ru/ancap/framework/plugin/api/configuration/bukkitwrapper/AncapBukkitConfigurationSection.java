@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -118,16 +119,23 @@ public class AncapBukkitConfigurationSection implements ConfigurationSection {
         return this.configurationSection.createSection(path, map);
     }
 
-    @Nullable
     @Override
     public String getString(@NotNull String path) {
-        return this.configurationSection.getString(path);
+        String string = this.configurationSection.getString(path);
+        if (string == null) {
+            throw new NoSuchElementException();
+        }
+        return string;
     }
 
-    @Nullable
+    @NotNull
     @Override
     public String getString(@NotNull String path, @Nullable String def) {
-        return this.configurationSection.getString(path, def);
+        String string = this.configurationSection.getString(path, def);
+        if (string == null) {
+            throw new NoSuchElementException();
+        }
+        return string;
     }
 
     @Override

@@ -2,8 +2,9 @@ package ru.ancap.framework.plugin.api.configuration;
 
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import ru.ancap.framework.plugin.api.configuration.yaml.YamlConfigurationLoader;
 import ru.ancap.framework.plugin.api.plugins.ResourceSource;
-import ru.ancap.framework.plugin.api.packetapi.packet.builder.AncapPacketBuilderSourceImpl;
+import ru.ancap.framework.plugin.api.packet.api.packet.builder.AncapPacketBuilderSourceImpl;
 import ru.ancap.misc.economy.balance.factory.BalanceFactoryImpl;
 import ru.ancap.misc.placeholder.PlaceholderSourceBuilderSourceImpl;
 import ru.ancap.misc.preparable.Preparable;
@@ -26,11 +27,11 @@ public class PreAncapConfiguration implements Preparable {
     }
 
     public PreAncapConfiguration(ResourceSource source, String fileName) {
-        this.configuration = YamlConfiguration.loadConfiguration(
+        this.configuration = new YamlConfigurationLoader(
                 new InputStreamReader(
                         source.getResource(fileName+Extension.YML)
                 )
-        );
+        ).load();
     }
 
     public PreAncapConfiguration(Configuration configuration) {

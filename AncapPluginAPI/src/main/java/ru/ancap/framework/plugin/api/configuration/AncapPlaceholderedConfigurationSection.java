@@ -30,7 +30,7 @@ public class AncapPlaceholderedConfigurationSection extends AncapConfigurationSe
     @Override
     public String getString(@NotNull String path) {
         try {
-            return this.getPlaceholder(super.getString(path));
+            return this.getPlaceholdered(super.getString(path));
         } catch (NoSuchPlaceholderException e) {
             throw this.getBadConfigurationException(path, e);
         }
@@ -41,7 +41,7 @@ public class AncapPlaceholderedConfigurationSection extends AncapConfigurationSe
         List<String> list = new ArrayList<>();
         try {
             for (String string : super.getStringList(path)) {
-                list.add(this.getPlaceholder(string));
+                list.add(this.getPlaceholdered(string));
             }
         } catch (NoSuchPlaceholderException e) {
             throw this.getBadConfigurationException(path, e);
@@ -49,7 +49,7 @@ public class AncapPlaceholderedConfigurationSection extends AncapConfigurationSe
         return list;
     }
 
-    private String getPlaceholder(String placeholder) throws NoSuchPlaceholderException {
+    private String getPlaceholdered(@NotNull String placeholder) throws NoSuchPlaceholderException {
         return new AncapPlaceholderableString(placeholder, this.placeholderSource).getPlaceholdered();
     }
 

@@ -1,9 +1,9 @@
 package ru.ancap.framework.plugin.api.configuration.placeholder;
 
-import ru.ancap.misc.placeholder.exception.NoSuchPlaceholderException;
 import ru.ancap.misc.placeholder.Placeholder;
 import ru.ancap.misc.placeholder.PlaceholderSource;
 import ru.ancap.misc.placeholder.PlaceholderableString;
+import ru.ancap.misc.placeholder.exception.NoSuchPlaceholderException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +56,7 @@ public class AncapPlaceholderableString implements PlaceholderableString {
                             .map(Object::toString)
                             .reduce((acc, e) -> acc  + e)
                             .get();
+                    nextPlaceholder = new ArrayList<>();
                     placeholders.add(new AncapPlaceholder(string));
                     placeholderOpened = false;
                     continue;

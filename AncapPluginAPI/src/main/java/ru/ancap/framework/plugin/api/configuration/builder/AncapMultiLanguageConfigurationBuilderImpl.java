@@ -1,13 +1,13 @@
 package ru.ancap.framework.plugin.api.configuration.builder;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import ru.ancap.framework.plugin.api.configuration.AncapConfiguration;
 import ru.ancap.framework.plugin.api.configuration.PreAncapConfiguration;
-import ru.ancap.framework.plugin.api.plugins.ResourceSource;
 import ru.ancap.framework.plugin.api.configuration.language.AncapMultiLanguageConfiguration;
 import ru.ancap.framework.plugin.api.configuration.language.AncapMultiLanguageConfigurationImpl;
 import ru.ancap.framework.plugin.api.configuration.language.Language;
+import ru.ancap.framework.plugin.api.configuration.yaml.YamlConfigurationLoader;
+import ru.ancap.framework.plugin.api.plugins.ResourceSource;
 
 import java.io.File;
 import java.io.InputStreamReader;
@@ -93,7 +93,7 @@ public class AncapMultiLanguageConfigurationBuilderImpl implements AncapMultiLan
     private void loadConfigFile(Language language, ResourceSource source) {
         String fileName = this.getConfigName()+"_"+language.getName()+".yml";
         Reader reader = new InputStreamReader(source.getResource(fileName));
-        FileConfiguration configuration = YamlConfiguration.loadConfiguration(reader);
+        FileConfiguration configuration = new YamlConfigurationLoader(reader).load();
         AncapConfiguration ancapConfiguration = new PreAncapConfiguration(configuration).getPrepared();
         this.loadedConfigurations.put(language, ancapConfiguration);
     }

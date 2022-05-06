@@ -13,7 +13,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.player.PlayerBucketEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.projectiles.ProjectileSource;
 import ru.ancap.framework.plugin.api.events.additions.BlockClickEvent;
@@ -35,9 +35,26 @@ public class ProtectListener extends AncapListener {
     }
 
     @EventHandler(priority = EventPriority.LOW)
-    public void on(PlayerBucketEvent e) {
+    public void on(PlayerBucketEmptyEvent e) {
+        this.bucket(e);
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    public void on(PlayerBucketFillEvent e) {
+        this.bucket(e);
+    }
+
+    @EventHandler(priority = EventPriority.LOW)
+    public void on(PlayerBucketEntityEvent e) {
+        this.throwEvent(e, e.getPlayer(), e.getEntity().getLocation());
+    }
+
+    private void bucket(PlayerBucketEvent e) {
         this.throwEvent(
-                new AncapWorldInteractEvent(e)
+                new AncapWorldInteractEvent(e, e.getPlayer(), e.getBlock().getLocation())
+        );
+        this.throwEvent(
+                new AncapWorldInteractEvent(e, e.getPlayer(), e.getBlockClicked().getLocation())
         );
     }
 
@@ -142,6 +159,11 @@ public class ProtectListener extends AncapListener {
                 this.throwEvent(event);
             }
         }
+    }
+
+    @EventHandler (priority = EventPriority.LOW)
+    public void onEntityInteract(PlayerInteractEntityEvent e) {
+        this.throwEvent(e, e.getPlayer(), e.getRightClicked().getLocation());
     }
 
     private void throwEvent(Cancellable e, Player player, Location interacted) {

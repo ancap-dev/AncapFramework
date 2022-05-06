@@ -2,9 +2,11 @@ package ru.ancap.framework.plugin.api.configuration.packet;
 
 import ru.ancap.framework.plugin.api.configuration.AncapPlaceholderedConfigurationSection;
 import ru.ancap.framework.plugin.api.configuration.exception.InvalidConfigurationPacketException;
-import ru.ancap.framework.plugin.api.packetapi.packet.Packet;
-import ru.ancap.framework.plugin.api.packetapi.packet.builder.AncapPacketBuilder;
-import ru.ancap.framework.plugin.api.packetapi.packet.builder.AncapPacketBuilderSource;
+import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
+import ru.ancap.framework.plugin.api.packet.api.packet.builder.AncapPacketBuilder;
+import ru.ancap.framework.plugin.api.packet.api.packet.builder.AncapPacketBuilderSource;
+
+import java.util.NoSuchElementException;
 
 public class AncapPacketConfigurationSection extends AncapPlaceholderedConfigurationSection implements PacketConfigurationSection {
 
@@ -26,10 +28,16 @@ public class AncapPacketConfigurationSection extends AncapPlaceholderedConfigura
     @Override
     public Packet getPacket() throws InvalidConfigurationPacketException {
         AncapPacketBuilder builder = source.getPacketBuilder();
-        builder.addMessage(this.getStringList("message"));
-        builder.setSound(this.getString("sound"));
-        builder.setActionBar(this.getString("action_bar"));
-        builder.setTitle(this.getString("title"));
+        builder.addMessage(this.getStringList("messages"));
+        try {
+            builder.setSound(this.getString("sound"));
+        } catch (NoSuchElementException ignored) {}
+        try {
+            builder.setActionBar(this.getString("action_bar"));
+        } catch (NoSuchElementException ignored) {}
+        try {
+            builder.setTitle(this.getString("title"));
+        } catch (NoSuchElementException ignored) {}
         return builder.build();
     }
 }

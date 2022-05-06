@@ -1,7 +1,7 @@
 package ru.ancap.framework.plugin.api.configuration.packet;
 
 import ru.ancap.framework.plugin.api.configuration.exception.InvalidConfigurationPacketException;
-import ru.ancap.framework.plugin.api.packetapi.packet.Packet;
+import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
 
 public interface PacketConfigurationSection {
 
