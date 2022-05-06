@@ -1,0 +1,38 @@
+name: AncapLibrary
+description: "Runtime part of AncapFramework. Includes testing module for it."
+authors: [ PukPukov ]
+website: framework.ancap-eco.ru
+
+main: ru.ancap.framework.plugin.plugin.AncapLibrary
+
+commands:
+  ancap:
+    description:
+  run-framework-test:
+    description: "Runs automatic test of AncapFramework to detect possible errors."
+    permission: "ancap.framework.library.test.run"
+
+permissions:
+  ancap.framework.library.test.run:
+    description: "Permission for running framework test"
+  ancap.*:
+    description: "Wildcard permission"
+    children:
+      - ancap.framework.*
+  ancap.framework.*:
+    description: "Wildcard permission"
+    children:
+      - ancap.framework.library.*
+  ancap.framework.library.*:
+    description: "Wildcard permission"
+    children:
+      - ancap.framework.library.test.*
+  ancap.framework.library.test.*:
+    description: "Wildcard permission"
+    children:
+      - ancap.framework.library.test.run
+
+version: '${project.version}'
+prefix: AncapLibrary
+api-version: 1.16
+load: POSTWORLD

@@ -1,0 +1,5 @@
+
+# if false, plugin uses player nickname as identifier (for pirate servers)
+# if true, plugin uses minecraft's UUID (for online-mode servers, maybe problems on pirate)
+
+uuid_based_player_identifier: false
