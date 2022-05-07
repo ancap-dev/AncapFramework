@@ -7,7 +7,7 @@
     <parent>
         <artifactId>AncapFramework</artifactId>
         <groupId>ru.ancap</groupId>
-        <version>1.0.0</version>
+        <version>1</version>
     </parent>
 
     <properties>
@@ -18,7 +18,7 @@
     </properties>
 
     <artifactId>AncapPlugin</artifactId>
-    <version>1.0-SNAPSHOT.17-BUGFIX.1</version>
+    <version>1.0-SNAPSHOT.17-BUGFIX.2</version>
     <packaging>jar</packaging>
 
     <name>AncapPlugin</name>
