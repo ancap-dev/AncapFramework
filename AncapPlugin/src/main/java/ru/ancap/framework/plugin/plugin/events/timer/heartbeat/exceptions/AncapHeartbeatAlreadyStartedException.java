@@ -1,4 +1,4 @@
-package ru.ancap.framework.plugin.plugin.events.timer.heartbeat.Exceptions;
+package ru.ancap.framework.plugin.plugin.events.timer.heartbeat.exceptions;
 
 public class AncapHeartbeatAlreadyStartedException extends RuntimeException {
 

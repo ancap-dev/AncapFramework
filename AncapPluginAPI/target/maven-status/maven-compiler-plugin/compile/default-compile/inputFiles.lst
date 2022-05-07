@@ -5,6 +5,7 @@ C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plu
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\builder\AncapPacketBuilderSource.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\incubator\commands\exceptions\AncapCommandException.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\modules\bossbar\builder\BossBarBuilderImpl.java
+C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\events\wrapper\AncapWrapperPlayerEvent.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\events\time\classic\FastTimerTenMinutesEvent.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\modules\text\builder\TextFactory.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\events\wrapper\AncapPVPEvent.java
@@ -13,7 +14,6 @@ C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plu
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\bossbar\NoSuchBossBarException.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\configuration\placeholder\AncapPlaceholderableString.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\incubator\commands\Handleable.java
-C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\receiver\AncapBukkitPacketReceiver.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\configuration\PlaceholderedConfiguration.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\modules\actionbar\ActionBar.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\plugins\exception\AlreadyLoadedException.java
@@ -30,6 +30,7 @@ C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plu
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\events\wrapper\AncapWorldSelfDestructEvent.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\modules\bossbar\BossBar.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\plugins\AncapPlugin.java
+C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\events\wrapper\AncapWrapperCancellableEvent.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\incubator\commands\exceptions\AncapCommandCoreLibraryExceptionImpl.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\configuration\balance\BalanceConfigurationSection.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\configuration\language\Language.java
@@ -54,7 +55,6 @@ C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plu
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\incubator\commands\AncapConsoleCommand.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\configuration\exception\InvalidConfigurationBalanceException.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\modules\message\Message.java
-C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\receiver\BossBarHider.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\configuration\AncapConfigurationSection.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\incubator\commands\CommandExecutor.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\plugin\api\packet\api\packet\builder\PacketBuilder.java

@@ -3,7 +3,6 @@ ru\ancap\framework\plugin\api\packet\api\packet\modules\message\AncapMessage.cla
 ru\ancap\framework\plugin\api\packet\api\packet\modules\chatcolor\ChatColorFormattableString.class
 ru\ancap\framework\plugin\api\packet\api\packet\modules\chatcolor\AncapChatColorFormattableString.class
 ru\ancap\framework\plugin\api\incubator\commands\name\AncapCommandName.class
-ru\ancap\framework\plugin\api\packet\api\packet\receiver\AncapBukkitPacketReceiver.class
 ru\ancap\framework\plugin\api\configuration\yaml\YamlConfigurationLoader.class
 ru\ancap\framework\plugin\api\incubator\commands\AncapConsoleCommand.class
 ru\ancap\framework\plugin\api\packet\api\receiver\SoundReceiver.class
@@ -70,7 +69,6 @@ ru\ancap\framework\plugin\api\packet\api\packet\modules\text\Text.class
 ru\ancap\framework\plugin\api\configuration\Configuration.class
 ru\ancap\framework\plugin\api\incubator\commands\PreCommand.class
 ru\ancap\framework\plugin\api\packet\api\packet\modules\sound\builder\SoundBuilder.class
-ru\ancap\framework\plugin\api\packet\api\packet\receiver\BossBarHider.class
 ru\ancap\framework\plugin\api\configuration\AncapConfigurationImpl.class
 ru\ancap\framework\plugin\api\configuration\PreAncapConfiguration.class
 ru\ancap\framework\plugin\api\configuration\bukkitwrapper\AncapBukkitFileConfiguration.class
@@ -87,6 +85,7 @@ ru\ancap\framework\plugin\api\plugins\ResourceSource.class
 ru\ancap\framework\plugin\api\incubator\commands\exceptions\AncapCommandNotEnoughArgsException.class
 ru\ancap\framework\plugin\api\packet\api\packet\modules\sound\Sound.class
 ru\ancap\framework\plugin\api\packet\api\packet\modules\text\PreText.class
+ru\ancap\framework\plugin\api\events\wrapper\AncapWrapperCancellableEvent.class
 ru\ancap\framework\plugin\api\configuration\AncapConfigurationSection.class
 ru\ancap\framework\plugin\api\events\wrapper\AncapEvent.class
 ru\ancap\framework\plugin\api\plugins\AncapMinimalisticPlugin.class
@@ -103,6 +102,7 @@ ru\ancap\framework\plugin\api\configuration\exception\InvalidConfigurationPacket
 ru\ancap\framework\plugin\api\packet\api\packet\Packet.class
 ru\ancap\framework\plugin\api\configuration\language\AncapMultiLanguageConfigurationImpl.class
 ru\ancap\framework\plugin\api\configuration\packet\PacketConfigurationSection.class
+ru\ancap\framework\plugin\api\events\wrapper\AncapWrapperPlayerEvent.class
 ru\ancap\framework\plugin\coreplugin\CorePlugin.class
 ru\ancap\framework\plugin\api\plugins\info\AncapPluginSettings.class
 ru\ancap\framework\plugin\api\configuration\placeholder\AncapPlaceholder.class

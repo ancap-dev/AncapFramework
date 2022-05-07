@@ -73,8 +73,8 @@ public class AncapBalance implements Balance {
                 wallet1.add(wallet);
                 return;
             }
-            this.wallets.add(wallet);
         }
+        this.wallets.add(wallet);
     }
 
     protected void remove(Wallet wallet) throws NotEnoughMoneyException {
@@ -83,7 +83,7 @@ public class AncapBalance implements Balance {
                 wallet1.remove(wallet);
                 return;
             }
-            throw new NotEnoughMoneyException();
         }
+        throw new NotEnoughMoneyException();
     }
 }

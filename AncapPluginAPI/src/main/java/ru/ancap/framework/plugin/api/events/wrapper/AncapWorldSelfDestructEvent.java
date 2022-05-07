@@ -10,16 +10,15 @@ import org.jetbrains.annotations.NotNull;
  * or entity attacks other entity.
  */
 
-public class AncapWorldSelfDestructEvent extends AncapEvent implements Cancellable {
+public class AncapWorldSelfDestructEvent extends AncapWrapperCancellableEvent implements Cancellable {
 
     public static final HandlerList handlers = new HandlerList();
 
-    private final @NotNull Cancellable event;
     private final @NotNull Location destructionPosition;
     private final @NotNull Location destructorPosition;
 
-    public AncapWorldSelfDestructEvent(@NotNull Cancellable e, @NotNull Location destructionPosition, @NotNull Location destructorPosition) {
-        this.event = e;
+    public AncapWorldSelfDestructEvent(@NotNull Cancellable event, @NotNull Location destructionPosition, @NotNull Location destructorPosition) {
+        super(event);
         this.destructionPosition = destructionPosition;
         this.destructorPosition = destructorPosition;
     }
@@ -42,21 +41,6 @@ public class AncapWorldSelfDestructEvent extends AncapEvent implements Cancellab
     @NotNull
     public Location getDestructorPosition() {
         return this.destructorPosition;
-    }
-
-    @NotNull
-    public Cancellable getBukkitEvent() {
-        return this.event;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return event.isCancelled();
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-        event.setCancelled(b);
     }
 
 }

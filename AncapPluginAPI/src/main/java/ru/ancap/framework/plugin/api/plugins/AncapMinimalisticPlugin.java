@@ -53,17 +53,6 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
         return new ArrayList<>();
     }
 
-    protected void loadAncap(Ancap ancap) {
-        this.validateFirstLoad();
-        ANCAP = ancap;
-    }
-
-    private void validateFirstLoad() {
-        if (ANCAP != null) {
-            throw new AlreadyLoadedException();
-        }
-    }
-
     protected ResourceSource getResourceSource() {
         return this.newResourceSource(true);
     }
@@ -74,5 +63,16 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
 
     private ResourceSource newResourceSource(boolean saveFiles) {
         return new AncapPluginResourceSource(this, saveFiles);
+    }
+
+    protected static synchronized void loadAncap(Ancap ancap) {
+        AncapMinimalisticPlugin.validateFirstLoad();
+        ANCAP = ancap;
+    }
+
+    private static synchronized void validateFirstLoad() {
+        if (ANCAP != null) {
+            throw new AlreadyLoadedException();
+        }
     }
 }

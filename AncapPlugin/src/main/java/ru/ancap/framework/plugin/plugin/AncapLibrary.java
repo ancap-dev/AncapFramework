@@ -43,9 +43,8 @@ public final class AncapLibrary extends CorePlugin {
     public void onEnable() {
         super.onEnable();
         this.linkageConfiguration();
-        this.loadCustomEvents();
+        this.startHeartbeat();
         this.enableAncap();
-        this.finishLoading();
     }
 
     private void enableAncap() {
@@ -57,30 +56,8 @@ public final class AncapLibrary extends CorePlugin {
         this.configuration = new AncapLibraryMultiLanguageMessageConfiguration(super.getMultiLanguageConfiguration());
     }
 
-    private void loadCustomEvents() {
-        this.loadEventWrapper();
-        this.loadTimeEvents();
-    }
-
-    private void loadTimeEvents() {
-        this.startHeartbeat();
-        this.startTimers();
-    }
-
-    private void loadEventWrapper() {
-        this.registerEventsListeners();
-    }
-
-
-    private void finishLoading() {
-
-    }
-
-    private void startTimers() {
-
-    }
-
     private void startHeartbeat() {
+        this.getAncap().getCorePlugin().getCoreMessageConfiguration();
         AncapHeartbeat heartbeat = new AncapHeartbeat(this);
         heartbeat.start();
     }

@@ -28,6 +28,7 @@ public class BossBarHiderRunnable extends Thread {
         try {
             Thread.sleep(duration* 1000L);
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
         this.player.hideBossBar(bossBar);
