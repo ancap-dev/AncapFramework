@@ -20,17 +20,22 @@
 
 ## Модуль AncapPluginAPI
 Основной модуль фреймворка.
+
 ### ConfigurationAPI
 API для работы с файлами конфигурации плагина. Поддерживает многоязыковые конфигурации, внутренние плейсходеры, а также имеет множество других маленьких удобных плюшек. Пример файла конфигурации:
 ![image](https://github.com/ancap-dev/AncapFramework/blob/main/META-INF/config1.png)
+
 ### EventAPI
 Null-безопасные обёртки для баккитовских ивентов. Больше никаких NullPointerException, instanceof и ((Player) projectile). Как бонус - AncapHeartbeat и три таймера.
+
 ### CommandAPI
 Устали от неповоротливого баккитовского CommandExecutor? Попробуйте AncapCommandExecutor с разделением onCommand на onPlayerCommand и onConsoleCommand с встроенной поддержкой AncapCommandValidatingAPI!
 
 Класс команды /mygodcommand длится 5000 строк, а 90% кода там - повторения? Попробуйте ООП-решение для обработки команд AncapSubCommandAPI и AncapCommandValidatingAPI (на данный момент в разработке).
+
 ### PacketAPI
 Сколько можно мучится, придумывая процедурные велосипеды для отправки сообщений и звуков игрокам? Никаких больше статиков и утиль-классов, только полноценные объекты Message, Sound, ActionBar, Title и даже BossBar вместе с удобными билдерами.
+
 ### AncapPluginAPI (собственной персоной)
 Легчайший способ интегрировать свой плагин с ConfigurationAPI и сделать мейн класс длиной в 50 строк вместо 1000. А как приятная плюшка - напоминание о необходимости подключать bstats сразу же после создания даже самого маленького плагина.
 
