@@ -43,6 +43,8 @@ public class SelfDestructListener extends AncapListener {
         this.throwEvent(e, firstBlock, firstBlock.getRelative(e.getDirection()));
     }
 
+
+
     private void throwEvent(Cancellable e, Block block, Block toBlock) {
         Event event = new AncapWorldSelfDestructEvent(e, block.getLocation(), toBlock.getLocation());
         this.throwEvent(event);

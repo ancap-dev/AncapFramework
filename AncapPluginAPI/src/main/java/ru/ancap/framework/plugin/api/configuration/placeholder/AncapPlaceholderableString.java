@@ -12,8 +12,13 @@ public class AncapPlaceholderableString implements PlaceholderableString {
 
     private String string;
     private PlaceholderSource source;
+    private String separator;
 
     public AncapPlaceholderableString(String string, PlaceholderSource source) {
+        this(string, source, "%");
+    }
+
+    public AncapPlaceholderableString(String string, PlaceholderSource source, String separator) {
         this.string = string;
         this.source = source;
     }
@@ -25,15 +30,17 @@ public class AncapPlaceholderableString implements PlaceholderableString {
     protected String getString() {
         return this.string;
     }
-
     protected PlaceholderSource getSource() {
         return this.source;
+    }
+    protected String getSeparator(){
+        return this.separator;
     }
 
     @Override
     public String getPlaceholdered() throws NoSuchPlaceholderException {
         List<Placeholder> placeholders = this.getPlaceholders();
-        if (placeholders.size() == 0) {
+        if (placeholders.isEmpty()) {
             return this.string;
         }
         for (Placeholder placeholder : placeholders) {
@@ -43,7 +50,7 @@ public class AncapPlaceholderableString implements PlaceholderableString {
     }
 
     public List<Placeholder> getPlaceholders() {
-        String separator = "%";
+        String separator = this.getSeparator();
         List<Placeholder> placeholders = new ArrayList<>();
         List<Character> nextPlaceholder = new ArrayList<>();
         boolean placeholderOpened = false;

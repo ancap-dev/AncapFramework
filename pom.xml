@@ -77,7 +77,7 @@
                     <branch>refs/heads/mvn-repo</branch>
                     <includes><include>**/*</include></includes>
                     <repositoryName>AncapFramework</repositoryName>
-                    <repositoryOwner>PukPukov</repositoryOwner>
+                    <repositoryOwner>ancap-dev</repositoryOwner>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,11 +1,11 @@
 package ru.ancap.framework.plugin.plugin.events.timer.heartbeat;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.ancap.framework.plugin.plugin.events.timer.heartbeat.Exceptions.AncapHeartbeatAlreadyStartedException;
+import ru.ancap.framework.plugin.plugin.events.timer.heartbeat.exceptions.AncapHeartbeatAlreadyStartedException;
 
 public class AncapHeartbeat {
 
-    private static boolean STARTED = false;
+    private static volatile boolean started = false;
 
     private final JavaPlugin owner;
 
@@ -28,7 +28,7 @@ public class AncapHeartbeat {
     }
 
     private void validateStart() {
-        if (AncapHeartbeat.STARTED) {
+        if (AncapHeartbeat.started) {
             throw new AncapHeartbeatAlreadyStartedException("AncapHeartbeat is already started");
         }
     }
@@ -39,7 +39,11 @@ public class AncapHeartbeat {
     }
 
     private void finishLoading() {
-        AncapHeartbeat.STARTED = true;
+        AncapHeartbeat.setStarted();
+    }
+
+    private static synchronized void setStarted() {
+        AncapHeartbeat.started = true;
     }
 
 }

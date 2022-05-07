@@ -10,17 +10,14 @@ import org.jetbrains.annotations.NotNull;
  * Calling, when some player tries to heal villager
  */
 
-public class AncapVillagerHealEvent extends AncapEvent implements Cancellable {
+public class AncapVillagerHealEvent extends AncapWrapperPlayerEvent implements Cancellable {
 
     public static final HandlerList handlers = new HandlerList();
 
-    private final @NotNull Cancellable event;
-    private final @NotNull Player player;
     private final @NotNull Villager villager;
 
     public AncapVillagerHealEvent(@NotNull Cancellable event, @NotNull Player player, @NotNull Villager villager) {
-        this.event = event;
-        this.player = player;
+        super(event, player);
         this.villager = villager;
     }
 
@@ -32,26 +29,6 @@ public class AncapVillagerHealEvent extends AncapEvent implements Cancellable {
 
     public static HandlerList getHandlerList() {
         return handlers;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return this.event.isCancelled();
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-        this.event.setCancelled(b);
-    }
-
-    @NotNull
-    public Cancellable getBukkitEvent() {
-        return this.event;
-    }
-
-    @NotNull
-    public Player getPlayer() {
-        return this.player;
     }
 
     @NotNull

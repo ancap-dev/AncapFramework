@@ -3,7 +3,6 @@ package ru.ancap.framework.plugin.plugin.events.timer;
 import org.bukkit.event.EventHandler;
 import ru.ancap.framework.plugin.api.events.time.classic.FastTimerTenMinutesEvent;
 import ru.ancap.framework.plugin.api.events.time.classic.FastTimerTenSecondEvent;
-import ru.ancap.framework.plugin.api.events.time.classic.SafeTimerOneDayEvent;
 import ru.ancap.framework.plugin.api.events.time.heartbeat.AncapHeartbeatEvent;
 import ru.ancap.framework.plugin.plugin.events.listeners.AncapListener;
 
@@ -30,7 +29,7 @@ public class AncapTimerEventListener extends AncapListener {
             this.tenMinutesCount = 0;
         }
         if (this.getDay() != this.day) {
-            this.throwEvent(new SafeTimerOneDayEvent());
+            // this.throwEvent(new SafeTimerOneDayEvent());
             this.day = this.getDay();
         }
         this.tickTimers();

@@ -1,5 +1,7 @@
 package ru.ancap.framework.plugin.plugin.events.listeners.wrapper;
 
+import org.bukkit.Location;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockExplodeEvent;
@@ -20,15 +22,17 @@ public class ExplodeListener extends AncapListener {
 
     @EventHandler (priority = EventPriority.LOW)
     public void explodeEvent(EntityExplodeEvent e) {
-        this.throwEvent(
-                new AncapExplodeEvent(e)
-        );
+        this.throwEvent(e, e.getLocation());
     }
 
     @EventHandler (priority = EventPriority.LOW)
     public void explodeEvent(BlockExplodeEvent e) {
+        this.throwEvent(e, e.getBlock().getLocation());
+    }
+
+    private void throwEvent(Cancellable e, Location location) {
         this.throwEvent(
-                new AncapExplodeEvent(e)
+                new AncapExplodeEvent(e, location)
         );
     }
 }
