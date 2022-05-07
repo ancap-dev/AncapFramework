@@ -56,8 +56,8 @@ Runtime-часть AncapFramework. Устанавливается прямо н�
      <dependency>  
 	     <groupId>ru.ancap</groupId>  
 	     <artifactId>AncapPluginAPI</artifactId>  
-	     <version>1.0.0</version>  
-	     <scope>compile</scope>  
+	     <version>LATEST</version>  
+	     <scope>provided</scope>  
 	 </dependency>
 
 # Вики
