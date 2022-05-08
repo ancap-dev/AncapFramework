@@ -1,14 +1,14 @@
 package ru.ancap.framework.plugin.coreplugin;
 
-import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
+import ru.ancap.framework.plugin.api.packet.api.packet.Sendable;
 
 import java.util.List;
 
 public interface CoreLibraryErrorNotifierSource {
 
 
-    Packet getInvalidArgsCountPacket(Integer invalidCount, Integer acceptedCount);
-    Packet getInvalidArgPacket(String invalid, List<String> accepted);
-    Packet getNoPermissionPacket(String perm);
+    Sendable getInvalidArgsCountPacket(Integer invalidCount, Integer acceptedCount);
+    Sendable getInvalidArgPacket(String invalid, List<String> accepted);
+    Sendable getNoPermissionPacket(String perm);
 
 }

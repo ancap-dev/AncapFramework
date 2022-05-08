@@ -1,6 +1,7 @@
 package ru.ancap.framework.plugin.api.packet.api.bossbar;
 
 import net.kyori.adventure.bossbar.BossBar;
+import ru.ancap.framework.plugin.api.packet.api.bossbar.exception.NoSuchBossBarException;
 
 import java.util.HashMap;
 import java.util.Map;

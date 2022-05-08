@@ -5,7 +5,7 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import ru.ancap.framework.plugin.api.packet.api.bossbar.BossBarHiderRunnable;
 import ru.ancap.framework.plugin.api.packet.api.bossbar.BossBarPool;
-import ru.ancap.framework.plugin.api.packet.api.bossbar.NoSuchBossBarException;
+import ru.ancap.framework.plugin.api.packet.api.bossbar.exception.NoSuchBossBarException;
 import ru.ancap.framework.plugin.api.packet.api.packet.Sendable;
 import ru.ancap.framework.plugin.api.packet.api.receiver.PacketReceiver;
 

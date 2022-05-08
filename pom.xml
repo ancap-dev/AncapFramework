@@ -11,8 +11,8 @@
 
     <modules>
         <module>AncapMisc</module>
-        <module>AncapPlugin</module>
         <module>AncapPluginAPI</module>
+        <module>AncapPlugin</module>
     </modules>
 
     <pluginRepositories>
