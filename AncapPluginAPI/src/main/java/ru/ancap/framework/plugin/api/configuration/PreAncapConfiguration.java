@@ -2,11 +2,10 @@ package ru.ancap.framework.plugin.api.configuration;
 
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import ru.ancap.framework.plugin.api.configuration.extended.AncapClassicExtendedConfigurationSection;
+import ru.ancap.framework.plugin.api.configuration.extended.AncapExtendedConfiguration;
 import ru.ancap.framework.plugin.api.configuration.yaml.YamlConfigurationLoader;
 import ru.ancap.framework.plugin.api.plugins.ResourceSource;
-import ru.ancap.framework.plugin.api.packet.api.packet.builder.AncapPacketBuilderSourceImpl;
-import ru.ancap.misc.economy.balance.factory.BalanceFactoryImpl;
-import ru.ancap.misc.placeholder.PlaceholderSourceBuilderSourceImpl;
 import ru.ancap.misc.preparable.Preparable;
 
 import java.io.File;
@@ -45,10 +44,12 @@ public class PreAncapConfiguration implements Preparable {
     @Override
     public AncapConfiguration getPrepared() {
         return new AncapConfigurationImpl(
-                this.getConfiguration(),
-                new AncapPacketBuilderSourceImpl(),
-                new BalanceFactoryImpl(),
-                new PlaceholderSourceBuilderSourceImpl()
+                new AncapExtendedConfiguration(
+                        new AncapClassicExtendedConfigurationSection(
+                                this.getConfiguration()
+                        ),
+                        this.getConfiguration()
+                )
         );
     }
 }

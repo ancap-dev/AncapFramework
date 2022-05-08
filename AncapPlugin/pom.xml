@@ -129,7 +129,7 @@
         <dependency>
             <groupId>ru.ancap</groupId>
             <artifactId>AncapPluginAPI</artifactId>
-            <version>1.0.0</version>
+            <version>LATEST</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

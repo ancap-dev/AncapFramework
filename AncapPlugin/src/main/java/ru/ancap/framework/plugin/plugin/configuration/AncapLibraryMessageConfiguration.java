@@ -1,7 +1,9 @@
 package ru.ancap.framework.plugin.plugin.configuration;
 
 import ru.ancap.framework.plugin.api.configuration.AncapConfiguration;
-import ru.ancap.framework.plugin.api.packet.api.packet.Packet;
+import ru.ancap.framework.plugin.api.configuration.extended.ExtendedConfigurationSection;
+import ru.ancap.framework.plugin.api.configuration.extended.entensions.exceptions.InvalidConfigurationSendableException;
+import ru.ancap.framework.plugin.api.packet.api.packet.Sendable;
 import ru.ancap.framework.plugin.coreplugin.CoreConfiguration;
 import ru.ancap.misc.placeholder.PlaceholderSource;
 
@@ -30,29 +32,47 @@ public class AncapLibraryMessageConfiguration extends AncapConfiguration impleme
     }
 
     @Override
-    public Packet getInvalidArgsCountPacket(Integer invalidCount, Integer acceptedCount) {
+    public Sendable getInvalidArgsCountPacket(Integer invalidCount, Integer acceptedCount) {
         PlaceholderSource source = this.getNewSourceBuilder()
                 .addPlaceholder(Placeholder.INVALID, invalidCount)
                 .addPlaceholder(Placeholder.ACCEPTED, acceptedCount)
                 .build();
-        return this.getPacket(AncapLibraryMessageConfiguration.Path.INVALID_ARGS_COUNT, source);
+        ExtendedConfigurationSection section = this.getConfigurationSection(Path.INVALID_ARGS_COUNT);
+        section.setPlaceholderSource(source);
+        try {
+            return section.getPacket();
+        } catch (InvalidConfigurationSendableException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public Packet getInvalidArgPacket(String invalid, List<String> accepted) {
+    public Sendable getInvalidArgPacket(String invalid, List<String> accepted) {
         PlaceholderSource source = this.getNewSourceBuilder()
                 .addPlaceholder(Placeholder.INVALID, invalid)
                 .addPlaceholder(Placeholder.ACCEPTED, accepted, Delimiter.COMMA)
                 .build();
-        return this.getPacket(Path.INVALID_ARG, source);
+        ExtendedConfigurationSection section = this.getConfigurationSection(Path.INVALID_ARG);
+        section.setPlaceholderSource(source);
+        try {
+            return section.getPacket();
+        } catch (InvalidConfigurationSendableException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public Packet getNoPermissionPacket(String perm) {
+    public Sendable getNoPermissionPacket(String perm) {
         PlaceholderSource source = this.getNewSourceBuilder()
                 .addPlaceholder(Placeholder.PERMISSION, perm)
                 .build();
-        return this.getPacket(Path.NO_PERMS, source);
+        ExtendedConfigurationSection section = this.getConfigurationSection(Path.NO_PERMS);
+        section.setPlaceholderSource(source);
+        try {
+            return section.getPacket();
+        } catch (InvalidConfigurationSendableException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

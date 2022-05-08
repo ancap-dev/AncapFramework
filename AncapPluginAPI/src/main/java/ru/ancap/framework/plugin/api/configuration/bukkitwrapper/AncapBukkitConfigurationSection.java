@@ -32,10 +32,10 @@ public class AncapBukkitConfigurationSection implements ConfigurationSection {
     }
 
     public AncapBukkitConfigurationSection(AncapBukkitConfigurationSection configurationSection) {
-        this.configurationSection = configurationSection.getConfigurationSection();
+        this.configurationSection = configurationSection.getBukkitConfigurationSection();
     }
 
-    protected ConfigurationSection getConfigurationSection() {
+    protected ConfigurationSection getBukkitConfigurationSection() {
         return this.configurationSection;
     }
 
@@ -389,11 +389,16 @@ public class AncapBukkitConfigurationSection implements ConfigurationSection {
         return this.configurationSection.isLong(path);
     }
 
-    @Nullable
+    @NotNull
     @Override
     public ConfigurationSection getConfigurationSection(@NotNull String path) {
-        return this.configurationSection.getConfigurationSection(path);
+        ConfigurationSection section = this.configurationSection.getConfigurationSection(path);
+        if (section == null) {
+            throw new NoSuchElementException();
+        }
+        return section;
     }
+
 
     @Override
     public boolean isConfigurationSection(@NotNull String path) {

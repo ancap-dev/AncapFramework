@@ -49,7 +49,7 @@ public final class AncapLibrary extends CorePlugin {
 
     private void enableAncap() {
         Ancap ancap = new AncapCore(this);
-        this.loadAncap(ancap);
+        AncapLibrary.loadAncap(ancap);
     }
 
     private void linkageConfiguration() {

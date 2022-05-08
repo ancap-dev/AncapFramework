@@ -27,10 +27,10 @@ public class AncapBukkitConfiguration extends AncapBukkitConfigurationSection im
     }
 
     public AncapBukkitConfiguration(AncapBukkitConfiguration configuration) {
-        this(configuration.getConfigurationSection(), configuration.getConfiguration());
+        this(configuration.getBukkitConfigurationSection(), configuration.getBukkitConfiguration());
     }
 
-    protected Configuration getConfiguration() {
+    protected Configuration getBukkitConfiguration() {
         return this.configuration;
     }
 

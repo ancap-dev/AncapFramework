@@ -21,12 +21,12 @@ public class ExplodeListener extends AncapListener {
     }
 
     @EventHandler (priority = EventPriority.LOW)
-    public void explodeEvent(EntityExplodeEvent e) {
+    public void on(EntityExplodeEvent e) {
         this.throwEvent(e, e.getLocation());
     }
 
     @EventHandler (priority = EventPriority.LOW)
-    public void explodeEvent(BlockExplodeEvent e) {
+    public void on(BlockExplodeEvent e) {
         this.throwEvent(e, e.getBlock().getLocation());
     }
 
