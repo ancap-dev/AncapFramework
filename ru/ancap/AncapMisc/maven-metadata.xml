@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>ru.ancap</groupId>
-  <artifactId>AncapFramework</artifactId>
+  <artifactId>AncapMisc</artifactId>
   <versioning>
-    <release>1</release>
+    <release>1.0.1</release>
     <versions>
-      <version>1</version>
+      <version>1.0.1</version>
     </versions>
-    <lastUpdated>20220508180631</lastUpdated>
+    <lastUpdated>20220508180714</lastUpdated>
   </versioning>
 </metadata>
