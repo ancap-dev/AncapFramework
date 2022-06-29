@@ -7,12 +7,15 @@
     <groupId>ru.ancap</groupId>
     <artifactId>AncapFramework</artifactId>
     <packaging>pom</packaging>
-    <version>1</version>
+    <version>2.0</version>
 
     <modules>
         <module>AncapMisc</module>
         <module>AncapPluginAPI</module>
         <module>AncapPlugin</module>
+        <module>CommandAPI</module>
+        <module>EventAPI</module>
+        <module>LanguageAPI</module>
     </modules>
 
     <pluginRepositories>
@@ -38,6 +41,15 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.2.0</version>
                 <executions>
@@ -49,15 +61,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
