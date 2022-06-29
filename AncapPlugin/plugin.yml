@@ -3,7 +3,7 @@ description: "Runtime part of AncapFramework. Includes testing module for it."
 authors: [ PukPukov ]
 website: framework.ancap-eco.ru
 
-main: ru.ancap.framework.plugin.plugin.AncapLibrary
+main: ru.ancap.framework.plugin.AncapLibrary
 
 commands:
   ancap:
@@ -32,7 +32,7 @@ permissions:
     children:
       - ancap.framework.plugin.test.run
 
-version: '1.0-SNAPSHOT.17-BUGFIX.2'
+version: '1.0'
 prefix: AncapPlugin
 api-version: 1.16
 load: POSTWORLD

@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="CommandAPI" />
+        <module name="LanguageAPI" />
+        <module name="AncapPluginAPI" />
+        <module name="EventAPI" />
         <module name="AncapMisc" />
         <module name="AncapPlugin" />
-        <module name="AncapPluginAPI" />
       </profile>
     </annotationProcessing>
   </component>
