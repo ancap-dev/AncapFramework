@@ -3,6 +3,7 @@ ru\ancap\framework\api\command\commands\delegator\settings\ClassicDelegatorSetti
 ru\ancap\framework\api\command\commands\delegator\subcommand\rule\delegate\operate\ArgumentsOperateRule.class
 ru\ancap\framework\api\command\commands\finite\pattern\ArgumentCutter.class
 ru\ancap\framework\api\event\OperableEvent.class
+ru\ancap\framework\api\event\classic\IncorrectArgsEvent.class
 ru\ancap\framework\api\event\classic\UnknownCommandEvent.class
 ru\ancap\framework\api\command\commands\command\executor\TabProvider.class
 ru\ancap\framework\api\event\classic\NotEnoughPermsEvent.class
@@ -13,7 +14,6 @@ ru\ancap\framework\api\command\commands\delegator\candidate\CandidateSource.clas
 ru\ancap\framework\api\command\commands\finite\pattern\CommandEventPattern.class
 ru\ancap\framework\api\command\commands\delegator\subcommand\SubCommand.class
 ru\ancap\framework\api\command\commands\command\executor\CommandExecutor.class
-ru\ancap\framework\api\command\commands\finite\pattern\IncorrectArgsEvent.class
 ru\ancap\framework\api\command\commands\delegator\subcommand\rule\provide\CommandProvidePattern.class
 ru\ancap\framework\api\command\commands\finite\pattern\SingleArgumenter$ArgumentedEventProvider.class
 ru\ancap\framework\api\event\classic\NotEnoughArgsEvent.class

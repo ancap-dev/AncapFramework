@@ -6,6 +6,9 @@ import ru.ancap.framework.api.command.commands.delegator.subcommand.rule.Command
 import ru.ancap.framework.api.command.commands.finite.FiniteCommandTarget;
 import ru.ancap.framework.api.command.commands.finite.pattern.ArgumentCutter;
 
+/**
+ * It's a command delegate rule that delegates to a command executor if the command is raw
+ */
 public class Raw implements CommandDelegateRule {
 
     private final CommandExecutor delegated;

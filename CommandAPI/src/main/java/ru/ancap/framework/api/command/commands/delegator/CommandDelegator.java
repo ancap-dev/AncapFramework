@@ -10,6 +10,9 @@ import ru.ancap.framework.api.command.commands.delegator.subcommand.rule.provide
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * `CommandDelegator` is a `CommandExecutor` that delegates commands to other `CommandExecutor`s based on a set of rules
+ */
 public class CommandDelegator implements CommandExecutor {
 
     private final CommandProvidePattern defaultRule;

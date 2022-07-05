@@ -7,7 +7,9 @@ import org.bukkit.event.Event;
 import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
 import ru.ancap.framework.api.command.commands.command.dispatched.exception.NoNextArgumentException;
 import ru.ancap.framework.api.event.classic.DescribedIncorrectArgsEvent;
+import ru.ancap.framework.api.event.classic.IncorrectArgsEvent;
 import ru.ancap.framework.api.event.classic.NotEnoughArgsEvent;
+
 
 public class ArgumentTransformer<T> implements CommandEventPattern {
 

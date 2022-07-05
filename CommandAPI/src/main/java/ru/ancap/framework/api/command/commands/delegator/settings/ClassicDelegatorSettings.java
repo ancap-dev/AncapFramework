@@ -8,6 +8,9 @@ import ru.ancap.framework.api.command.commands.delegator.subcommand.rule.provide
 import ru.ancap.framework.api.command.commands.finite.FiniteCommandTarget;
 import ru.ancap.framework.api.event.classic.UnknownCommandEvent;
 
+/**
+ * It's a delegator settings class that uses the `UnknownCommandEvent` as the default rule
+ */
 @Getter
 public class ClassicDelegatorSettings implements DelegatorSettings {
 

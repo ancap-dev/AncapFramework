@@ -39,6 +39,7 @@ public final class AncapLibrary extends AncapPlugin {
         this.loadLocales();
     }
 
+
     private void loadLocales() {
         new Thread(() -> new AncapPluginLocaleLoader(new File(this.getDataFolder(), "locales")).load()).start();
     }
