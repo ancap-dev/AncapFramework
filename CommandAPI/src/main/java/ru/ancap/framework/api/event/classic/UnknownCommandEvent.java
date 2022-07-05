@@ -6,6 +6,9 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import ru.ancap.framework.api.event.CommandEvent;
 
+/**
+ * It's an event that is fired when a command sender uses a command that doesn't exist
+ */
 @Getter
 public class UnknownCommandEvent extends CommandEvent {
 

@@ -14,8 +14,8 @@
         <module>AncapPluginAPI</module>
         <module>AncapPlugin</module>
         <module>CommandAPI</module>
-        <module>EventAPI</module>
         <module>LanguageAPI</module>
+        <module>BukkitPlus</module>
     </modules>
 
     <pluginRepositories>

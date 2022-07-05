@@ -7,6 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import ru.ancap.framework.api.event.CommandEvent;
 import ru.ancap.framework.api.language.Language;
 
+/**
+ * It's an event that is fired when a player changes their language
+ */
 @Getter
 public class LanguageChangeEvent extends CommandEvent {
 

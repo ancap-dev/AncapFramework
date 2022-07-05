@@ -6,6 +6,9 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import ru.ancap.framework.api.event.CommandEvent;
 
+/**
+ * It's a CommandEvent that is fired when a command sender uses a command incorrectly
+ */
 @Getter
 public class DescribedIncorrectArgsEvent extends CommandEvent {
 

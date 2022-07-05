@@ -8,6 +8,7 @@ import ru.ancap.framework.api.command.commands.finite.pattern.CommandEventPatter
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FiniteCommandTarget implements CommandExecutor {
 
     private final TabProvider provider;

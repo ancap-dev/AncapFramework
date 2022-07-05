@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="CommandAPI" />
         <module name="LanguageAPI" />
+        <module name="MaterialAPI" />
+        <module name="WorldIteratorAPI" />
         <module name="AncapPluginAPI" />
+        <module name="AncapPlugin" />
         <module name="EventAPI" />
         <module name="AncapMisc" />
-        <module name="AncapPlugin" />
       </profile>
     </annotationProcessing>
   </component>

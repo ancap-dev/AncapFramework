@@ -1,3 +1,4 @@
+C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\IncorrectArgsEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\rule\delegate\DelegatePattern.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\NotEnoughPermsEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\rule\delegate\StringDelegatePattern.java
@@ -11,7 +12,6 @@ C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\eve
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\NotEnoughArgsEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\settings\DelegatorSettings.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\SubCommand.java
-C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\finite\pattern\IncorrectArgsEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\Raw.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\UnknownCommandEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\finite\Adviser.java

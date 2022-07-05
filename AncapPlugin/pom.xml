@@ -46,7 +46,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>ru.ancap</shadedPattern>
+                            <shadedPattern>${groupId}</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -137,12 +137,6 @@
             <groupId>ru.ancap</groupId>
             <artifactId>AncapPluginAPI</artifactId>
             <version>3.3.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
