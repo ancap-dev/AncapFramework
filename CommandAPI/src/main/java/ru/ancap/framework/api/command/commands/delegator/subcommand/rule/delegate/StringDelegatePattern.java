@@ -1,6 +1,6 @@
 package ru.ancap.framework.api.command.commands.delegator.subcommand.rule.delegate;
 
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
+import ru.ancap.framework.api.command.commands.command.dispatched.LeveledCommand;
 import ru.ancap.framework.api.command.commands.delegator.subcommand.rule.delegate.operate.ArgumentsOperateRule;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class StringDelegatePattern implements DelegatePattern {
     }
 
     @Override
-    public boolean isOperate(DispatchedCommand command) {
+    public boolean isOperate(LeveledCommand command) {
         for (ArgumentsOperateRule key : this.keys) {
             if (key.isOperate(command)) {
                 return true;

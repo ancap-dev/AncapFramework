@@ -1,18 +1,12 @@
 package ru.ancap.framework.plugin.event.listeners.command;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import ru.ancap.framework.api.LAPI;
-import ru.ancap.framework.api.command.commands.finite.pattern.IncorrectArgsEvent;
 import ru.ancap.framework.api.event.OperableEvent;
-import ru.ancap.framework.api.event.classic.DescribedIncorrectArgsEvent;
-import ru.ancap.framework.api.event.classic.NotEnoughArgsEvent;
-import ru.ancap.framework.api.event.classic.NotEnoughPermsEvent;
-import ru.ancap.framework.api.event.classic.UnknownCommandEvent;
+import ru.ancap.framework.api.event.classic.*;
 import ru.ancap.framework.api.plugin.plugins.AncapPlugin;
 
 public class CommandEventsListener implements Listener {
@@ -64,35 +58,23 @@ public class CommandEventsListener implements Listener {
     }
 
     private void operateForm(Form form, String id, Placeholder... placeholders) {
-        if (form.getEvent().operate()) {
-            CommandSender sender = form.getSender();
+        if (form.event().operate()) {
+            CommandSender sender = form.sender();
             String message = LAPI.localized(id, sender.getName());
             for (Placeholder placeholder : placeholders) {
-                message = message.replace(placeholder.getPlaceholder(), placeholder.replaceTo);
+                message = message.replace(placeholder.placeholder(), placeholder.replaceTo);
             }
             sender.sendMessage(message);
         }
     }
+    private record Form(OperableEvent event, CommandSender sender) {}
 
-    @AllArgsConstructor
-    @Getter
-    private static class Form {
+    private record Placeholder(String placeholder, String replaceTo) {
 
-        private final OperableEvent event;
-        private final CommandSender sender;
-
-    }
-
-    @Getter
-    private static class Placeholder {
-
-        private final String placeholder;
-        private final String replaceTo;
-
-
-        public Placeholder(String placeholder, String replaceTo) {
-            this.placeholder = "%"+placeholder+"%";
+        private Placeholder(String placeholder, String replaceTo) {
+            this.placeholder = "%" + placeholder + "%";
             this.replaceTo = replaceTo;
         }
     }
+
 }

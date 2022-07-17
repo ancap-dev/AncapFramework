@@ -2,7 +2,7 @@ package ru.ancap.framework.api.command.commands.finite.pattern;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Event;
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
+import ru.ancap.framework.api.command.commands.command.dispatched.LeveledCommand;
 
 public class ArgumentCutter implements CommandEventPattern {
 
@@ -13,8 +13,8 @@ public class ArgumentCutter implements CommandEventPattern {
     }
 
     @Override
-    public Event patternalize(DispatchedCommand command) {
-        return this.provider.event(command.getSender());
+    public Event patternalize(CommandSender sender, LeveledCommand command) {
+        return this.provider.event(sender);
     }
 
     @FunctionalInterface

@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MaterialAPI" />
         <module name="CommandAPI" />
         <module name="LanguageAPI" />
-        <module name="MaterialAPI" />
         <module name="WorldIteratorAPI" />
         <module name="AncapPluginAPI" />
         <module name="AncapPlugin" />
@@ -16,10 +16,5 @@
         <module name="AncapMisc" />
       </profile>
     </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AncapPlugin" options="" />
-    </option>
   </component>
 </project>

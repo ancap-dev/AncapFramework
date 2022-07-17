@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Event;
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
+import ru.ancap.framework.api.command.commands.command.dispatched.LeveledCommand;
 import ru.ancap.framework.api.command.commands.command.dispatched.exception.NoNextArgumentException;
 import ru.ancap.framework.api.event.classic.DescribedIncorrectArgsEvent;
 import ru.ancap.framework.api.event.classic.IncorrectArgsEvent;
@@ -26,17 +26,17 @@ public class ArgumentTransformer<T> implements CommandEventPattern {
     }
 
     @Override
-    public Event patternalize(DispatchedCommand command) {
+    public Event patternalize(CommandSender sender, LeveledCommand command) {
         String argument = null;
         try {
             argument = command.nextArgument();
-            return this.eventSource.event(command.getSender(), this.transformer.transform(argument));
+            return this.eventSource.event(sender, this.transformer.transform(argument));
         } catch (NoNextArgumentException e) {
-            return new NotEnoughArgsEvent(command.getSender(), 1);
+            return new NotEnoughArgsEvent(sender, 1);
         } catch (DescribedTransformationException e) {
-            return new DescribedIncorrectArgsEvent(command.getSender(), e.description);
+            return new DescribedIncorrectArgsEvent(sender, e.description);
         } catch (TransformationException e) {
-            return new IncorrectArgsEvent(command.getSender(), argument);
+            return new IncorrectArgsEvent(sender, argument);
         }
     }
 

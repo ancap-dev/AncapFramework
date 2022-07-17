@@ -2,24 +2,17 @@ package ru.ancap.framework.api.command.commands.finite;
 
 import lombok.AllArgsConstructor;
 import org.bukkit.command.CommandSender;
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
-import ru.ancap.framework.api.command.commands.command.executor.CommandExecutor;
-
-import java.util.List;
+import ru.ancap.framework.api.command.commands.command.event.CommandDispatch;
+import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
 
 @AllArgsConstructor
-public class Adviser implements CommandExecutor {
+public class Adviser implements CommandOperator {
 
     private AdviseProvider provider;
 
     @Override
-    public void on(DispatchedCommand command) {
-        command.getSender().sendMessage(this.provider.advice(command.getSender()));
-    }
-
-    @Override
-    public List<String> getTabCompletionsFor(DispatchedCommand command) {
-        return List.of(this.provider.advice(command.getSender()));
+    public void on(CommandDispatch dispatch) {
+        dispatch.sender().sendMessage(this.provider.advice(dispatch.sender()));
     }
 
     public interface AdviseProvider {

@@ -7,12 +7,12 @@ public interface LanguageSettings {
     /**
      * Returns language, that setted player with inserted playerID or default.
      */
-    Language getLanguage(@NotNull String playerID);
+    Language getLanguage(@NotNull String playerName);
 
     /**
      * Set's the language for player.
-     * @param playerID
+     * @param playerName
      * @param language
      */
-    void setLanguage(@NotNull String playerID, @NotNull Language language);
+    void setLanguage(@NotNull String playerName, @NotNull Language language);
 }

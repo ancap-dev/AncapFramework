@@ -1,15 +1,14 @@
 package ru.ancap.framework.api.command.commands;
 
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
-import ru.ancap.framework.api.command.commands.command.executor.CommandExecutor;
+import lombok.experimental.Delegate;
+import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
 
-import java.util.List;
+public class CommandTarget implements CommandOperator {
 
-public class CommandTarget implements CommandExecutor {
+    @Delegate
+    private final CommandOperator executor;
 
-    private final CommandExecutor executor;
-
-    public CommandTarget(CommandExecutor executor) {
+    public CommandTarget(CommandOperator executor) {
         this.executor = executor;
     }
 
@@ -17,17 +16,7 @@ public class CommandTarget implements CommandExecutor {
         this(target.executor);
     }
 
-    protected CommandExecutor getExecutor() {
+    protected CommandOperator getExecutor() {
         return this.executor;
-    }
-
-    @Override
-    public void on(DispatchedCommand command) {
-        this.executor.on(command);
-    }
-
-    @Override
-    public List<String> getTabCompletionsFor(DispatchedCommand command) {
-        return this.executor.getTabCompletionsFor(command);
     }
 }

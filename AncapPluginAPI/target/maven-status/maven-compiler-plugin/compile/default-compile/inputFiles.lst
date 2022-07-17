@@ -2,6 +2,7 @@ C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\info\AncapPluginSettings.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\config\StreamConfig.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\AncapPluginResourceSource.java
-C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\exception\CommandRegisterException.java
+C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\exception\CommandNotRegisteredException.java
+C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\commands\CommandCenter.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\AncapMinimalisticPlugin.java
 C:\сурцы\AncapFramework\AncapPluginAPI\src\main\java\ru\ancap\framework\api\plugin\plugins\ResourceSource.java
