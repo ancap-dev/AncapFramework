@@ -1,11 +1,10 @@
 package ru.ancap.framework.api.command.commands.delegator.settings;
 
 import lombok.Getter;
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
-import ru.ancap.framework.api.command.commands.command.dispatched.exception.NoNextArgumentException;
-import ru.ancap.framework.api.command.commands.command.executor.CommandExecutor;
+import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
 import ru.ancap.framework.api.command.commands.delegator.subcommand.rule.provide.CommandProvidePattern;
 import ru.ancap.framework.api.command.commands.finite.FiniteCommandTarget;
+import ru.ancap.framework.api.command.commands.finite.pattern.SingleArgumenter;
 import ru.ancap.framework.api.event.classic.UnknownCommandEvent;
 
 /**
@@ -18,13 +17,7 @@ public class ClassicDelegatorSettings implements DelegatorSettings {
 
     public ClassicDelegatorSettings() {
         this.spareRule = () -> new FiniteCommandTarget(
-                command -> {
-                    try {
-                        return new UnknownCommandEvent(command.getSender(), command.nextArgument());
-                    } catch (NoNextArgumentException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+                new SingleArgumenter(UnknownCommandEvent::new)
         );
     }
 
@@ -35,20 +28,15 @@ public class ClassicDelegatorSettings implements DelegatorSettings {
 
     public static class UnknownSubCommand implements CommandProvidePattern {
 
-        private final CommandExecutor executor;
+        private final CommandOperator executor;
 
-        public UnknownSubCommand(CommandExecutor delegated) {
+        public UnknownSubCommand(CommandOperator delegated) {
             this.executor = delegated;
         }
 
         @Override
-        public CommandExecutor delegated() {
+        public CommandOperator delegated() {
             return this.executor;
-        }
-
-        @Override
-        public DispatchedCommand getCommandProvideToExecutor(DispatchedCommand command) {
-            return command;
         }
 
     }

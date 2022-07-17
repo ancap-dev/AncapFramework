@@ -3,12 +3,17 @@ package ru.ancap.framework.api.plugin.plugins.info;
 import org.bukkit.configuration.ConfigurationSection;
 import ru.ancap.misc.strings.integer.AncapIntegerString;
 
+import java.util.Collections;
+import java.util.List;
+
 public class AncapPluginSettings {
 
-    private ConfigurationSection section;
+    private final ConfigurationSection section;
 
     protected static class Path {
-        public static final String PLUGIN_ID = "plugin_id";
+        public static final String PLUGIN_ID = "id";
+        public static final String COMMAND_LIST = "commands.list";
+        public static final String ALIASES_DOMAIN = "commands.aliases";
     }
 
     public AncapPluginSettings(ConfigurationSection configuration) {
@@ -16,8 +21,20 @@ public class AncapPluginSettings {
     }
 
     public int getPluginId() {
-        String string = this.section.getString(Path.PLUGIN_ID);
-        return new AncapIntegerString(string).getValue();
+        return this.section
+                .getInt(Path.PLUGIN_ID);
+    }
+
+    public List<String> getCommandList() {
+        return this.section
+                .getStringList(Path.COMMAND_LIST);
+    }
+
+    public List<String> getAliasesList(String commandName) {
+        ConfigurationSection section = this.section
+                .getConfigurationSection(Path.ALIASES_DOMAIN);
+        if (section == null) return Collections.emptyList();
+        return section.getStringList(commandName);
     }
 
 }

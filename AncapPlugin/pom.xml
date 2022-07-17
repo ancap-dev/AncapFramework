@@ -15,12 +15,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
     <artifactId>AncapPlugin</artifactId>
-    <version>1.0</version>
+    <version>1.2</version>
 
 
     <name>AncapPlugin</name>
@@ -28,25 +28,50 @@
     <description>AncapAPI runtime part</description>
 
     <build>
+        <finalName>ancap-plugin-v${version}</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0-SNAPSHOT</version>
+                <version>3.3.0</version>
                 <configuration>
+                    <minimizeJar>true</minimizeJar>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
                             <shadedPattern>${groupId}</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.github.retrooper</pattern>
+                            <shadedPattern>ru.ancap.framework.plugin.packet.events
+                            </shadedPattern> <!--relocate packetevents package. choose something unique!-->
+                        </relocation>
+                        <relocation>
+                            <pattern>io.github.retrooper</pattern>
+                            <shadedPattern>ru.ancap.framework.plugin.packet.events
+                            </shadedPattern> <!--relocate packetevents package. choose something unique!-->
+                        </relocation>
+                        <relocation>
+                            <pattern>net.kyori</pattern>
+                            <shadedPattern>ru.ancap.framework.plugin.packet.events.libs.net.kyori
+                            </shadedPattern> <!--relocate packetevents package. choose something unique!-->
+                        </relocation>
+
+                        <relocation>
+                            <pattern>com.google.gson</pattern>
+                            <shadedPattern>ru.ancap.framework.plugin.packet.events.libs.com.google.gson
+                            </shadedPattern> <!--relocate packetevents package. choose something unique!-->
                         </relocation>
                     </relocations>
                 </configuration>
@@ -57,10 +82,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <artifactSet>
-                                <excludes>
-                                </excludes>
-                            </artifactSet>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
                 </executions>
@@ -82,10 +104,6 @@
                             <resources>
                                 <resource>
                                     <directory>src/main/resources</directory>
-                                    <filtering>true</filtering>
-                                    <includes>
-                                        <include>**/*.yml</include>
-                                    </includes>
                                 </resource>
                             </resources>
                         </configuration>
@@ -109,6 +127,10 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </snapshots>
+        </repository>
+        <repository>
+            <id>jitpack-repo</id>
+            <url>https://jitpack.io/</url>
         </repository>
         <repository>
             <id>papermc-repo</id>
@@ -136,7 +158,7 @@
         <dependency>
             <groupId>ru.ancap</groupId>
             <artifactId>AncapPluginAPI</artifactId>
-            <version>3.3.0</version>
+            <version>3.4.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -146,9 +168,30 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.destroystokyo.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <groupId>com.github.retrooper.packetevents</groupId>
+            <artifactId>spigot</artifactId>
+            <version>2.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.36.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gwenn</groupId>
+            <artifactId>sqlite-dialect</artifactId>
+            <version>0.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.6.8.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.ancap</groupId>
+            <artifactId>CommandAPI</artifactId>
+            <version>2.3</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

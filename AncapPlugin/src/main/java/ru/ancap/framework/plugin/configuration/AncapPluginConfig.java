@@ -13,6 +13,10 @@ public class AncapPluginConfig {
         this.section = section;
     }
 
+    public void load() {
+        loaded = this;
+    }
+
     public static AncapPluginConfig loaded() {
         return loaded;
     }

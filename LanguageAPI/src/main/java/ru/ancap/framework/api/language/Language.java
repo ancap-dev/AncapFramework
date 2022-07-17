@@ -1,5 +1,6 @@
 package ru.ancap.framework.api.language;
 
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -18,6 +19,7 @@ public class Language {
 
     private static Map<String, Language> map;
 
+    @Getter
     private final String code;
 
     private Language(String code) {

@@ -5,10 +5,13 @@ import ru.ancap.framework.api.plugin.plugins.config.StreamConfig;
 import ru.ancap.framework.api.plugin.plugins.info.AncapPluginSettings;
 
 import javax.annotation.OverridingMethodsMustInvokeSuper;
+import java.util.*;
 
 public abstract class AncapPlugin extends AncapMinimalisticPlugin {
 
-    public static final String MESSAGE_DOMAIN = "ru.ancap.framework.messages.";;
+    public static final String MESSAGE_DOMAIN = "ru.ancap.framework.messages.";
+
+    private static final Map<String, AncapPlugin> plugins = new HashMap<>();
 
     private Metrics metrics;
     private AncapPluginSettings settings;
@@ -23,15 +26,24 @@ public abstract class AncapPlugin extends AncapMinimalisticPlugin {
         super.onEnable();
         this.loadPluginSettings();
         this.registerMetrics();
+        this.register();
     }
 
-    /**
-     * It's bad practice to use onDisable logic, because it might be not called in some
-     * cases like server crash, so I force-disabled it in AncapFramework.
-     */
+    protected Iterable<AncapPlugin> ancapPlugins() {
+        return plugins.values();
+    }
+
+    private void register() {
+        plugins.put(this.getName(), this);
+    }
+
+    private void unregister() {
+        plugins.remove(this.getName());
+    }
 
     @Override
-    public final void onDisable() {
+    public void onDisable() {
+        this.unregister();
     }
 
     public AncapPluginSettings getSettings() {

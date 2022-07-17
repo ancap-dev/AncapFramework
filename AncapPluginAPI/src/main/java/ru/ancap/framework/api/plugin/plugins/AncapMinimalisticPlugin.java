@@ -2,18 +2,20 @@ package ru.ancap.framework.api.plugin.plugins;
 
 import javafx.util.Pair;
 import org.bukkit.Bukkit;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.ancap.framework.api.command.commands.command.executor.CommandExecutor;
-import ru.ancap.framework.api.command.executor.WrapExecutor;
-import ru.ancap.framework.api.plugin.plugins.exception.CommandRegisterException;
+import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
+import ru.ancap.framework.api.loader.YamlLocaleLoader;
+import ru.ancap.framework.api.plugin.plugins.commands.CommandCenter;
+import ru.ancap.framework.api.plugin.plugins.config.StreamConfig;
 
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AncapMinimalisticPlugin extends JavaPlugin {
+
+    private static CommandCenter commandCenter;
 
     @OverridingMethodsMustInvokeSuper
     @Override
@@ -23,9 +25,20 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
         this.registerAutoRegisteredCommandExecutors();
     }
 
+    protected void loadLocale(String fileName) {
+        new YamlLocaleLoader(
+                new StreamConfig(
+                        this.getResource(fileName)
+                )
+        ).load();
+    }
+
     private void registerAutoRegisteredCommandExecutors() {
-        for (Pair<String, CommandExecutor> command : this.commands()) {
-            this.registerCommand(command.getKey(), command.getValue());
+        for (Pair<String, CommandOperator> command : this.commands()) {
+            this.registerExecutor(
+                    command.getKey(),
+                    command.getValue()
+            );
         }
     }
 
@@ -36,19 +49,21 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
     }
 
     protected void registerEventsListener(Listener listener) {
-        Bukkit.getPluginManager().registerEvents(listener, this);
+        Bukkit.getPluginManager().registerEvents(
+                listener,
+                this
+        );
     }
 
-    protected void registerCommand(String commandName, org.bukkit.command.CommandExecutor executor) {
-        PluginCommand command = this.getCommand(commandName);
-        if (command == null) {
-            throw new CommandRegisterException("Command must be declared in plugin.yml!");
+    protected void registerCommandCenter(CommandCenter commandCenter) {
+        if (AncapMinimalisticPlugin.commandCenter != null) {
+            throw new IllegalStateException("Command center is already registered!");
         }
-        command.setExecutor(executor);
+        AncapMinimalisticPlugin.commandCenter = commandCenter;
     }
 
-    protected void registerCommand(String commandName, CommandExecutor executor) {
-        this.registerCommand(commandName, new WrapExecutor(executor));
+    protected void registerExecutor(String commandName, CommandOperator executor) {
+        commandCenter.setExecutor(commandName, executor);
     }
 
     protected ResourceSource getResourceSource() {
@@ -66,7 +81,7 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
     protected List<Listener> listeners() {
         return new ArrayList<>();
     }
-    protected List<Pair<String, CommandExecutor>> commands() {
+    protected List<Pair<String, CommandOperator>> commands() {
         return new ArrayList<>();
     }
 }

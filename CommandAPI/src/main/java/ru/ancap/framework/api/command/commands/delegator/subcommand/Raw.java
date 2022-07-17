@@ -1,7 +1,7 @@
 package ru.ancap.framework.api.command.commands.delegator.subcommand;
 
-import ru.ancap.framework.api.command.commands.command.dispatched.DispatchedCommand;
-import ru.ancap.framework.api.command.commands.command.executor.CommandExecutor;
+import ru.ancap.framework.api.command.commands.command.dispatched.LeveledCommand;
+import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
 import ru.ancap.framework.api.command.commands.delegator.subcommand.rule.CommandDelegateRule;
 import ru.ancap.framework.api.command.commands.finite.FiniteCommandTarget;
 import ru.ancap.framework.api.command.commands.finite.pattern.ArgumentCutter;
@@ -11,9 +11,9 @@ import ru.ancap.framework.api.command.commands.finite.pattern.ArgumentCutter;
  */
 public class Raw implements CommandDelegateRule {
 
-    private final CommandExecutor delegated;
+    private final CommandOperator delegated;
 
-    public Raw(CommandExecutor delegated) {
+    public Raw(CommandOperator delegated) {
         this.delegated = delegated;
     }
 
@@ -24,12 +24,12 @@ public class Raw implements CommandDelegateRule {
     }
 
     @Override
-    public boolean isOperate(DispatchedCommand command) {
+    public boolean isOperate(LeveledCommand command) {
         return command.isRaw();
     }
 
     @Override
-    public CommandExecutor delegated() {
+    public CommandOperator delegated() {
         return this.delegated;
     }
 }
