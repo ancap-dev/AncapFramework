@@ -7,9 +7,12 @@
         <groupId>ru.ancap</groupId>
         <version>2.0</version>
     </parent>
+
+    <packaging>jar</packaging>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>DatabaseAPI</artifactId>
+    <artifactId>LanguageAPI</artifactId>
     <version>1.0.0</version>
 
     <dependencies>
@@ -20,5 +23,10 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+    </properties>
 
 </project>
