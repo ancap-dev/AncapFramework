@@ -4,7 +4,8 @@ import ru.ancap.framework.plugin.language.module.model.SpeakerModel;
 
 public interface SpeakerModelRepository {
 
-    SpeakerModel get(String name);
-    void write(SpeakerModel model);
+    SpeakerModel read(String name);
+    void create(SpeakerModel model);
+    void update(SpeakerModel model);
 
 }

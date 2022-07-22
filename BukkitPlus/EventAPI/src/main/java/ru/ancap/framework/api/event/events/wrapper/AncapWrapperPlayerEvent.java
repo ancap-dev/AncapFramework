@@ -8,7 +8,7 @@ public abstract class AncapWrapperPlayerEvent extends AncapWrapperCancellableEve
 
     private final @NotNull Player player;
 
-    public AncapWrapperPlayerEvent(Cancellable event, Player player) {
+    public AncapWrapperPlayerEvent(Cancellable event, @NotNull Player player) {
         super(event);
         this.player = player;
     }

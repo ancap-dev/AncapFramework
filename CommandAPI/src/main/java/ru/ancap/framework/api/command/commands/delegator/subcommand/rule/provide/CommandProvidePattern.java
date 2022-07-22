@@ -12,7 +12,7 @@ public interface CommandProvidePattern {
         return sender;
     }
 
-    default <T extends LeveledCommand> T convert(T command) {
+    default LeveledCommand convert(LeveledCommand command) {
         return command;
     }
 

@@ -1,9 +1,6 @@
 package ru.ancap.framework.api.command.commands.command.dispatched;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.With;
+import lombok.*;
 import ru.ancap.framework.api.command.commands.command.dispatched.exception.NoNextArgumentException;
 
 import java.util.List;
@@ -22,8 +19,10 @@ public class TextCommand implements LeveledCommand {
         this.fullCommand = this;
     }
 
+    @Override
     public TextCommand withoutArgument() {
-        return this.withArgs(this.getArgs().subList(1, this.getArgs().size()-1));
+        if (this.isRaw()) throw new NoNextArgumentException();
+        return this.withArgs(this.getArgs().subList(1, this.getArgs().size()));
     }
 
     @Override
@@ -36,10 +35,19 @@ public class TextCommand implements LeveledCommand {
     }
 
     public boolean isRaw() {
-        return this.args.size() == 0;
+        return this.args.isEmpty();
     }
 
     public String getFlattenedArgs() {
         return String.join(" ", this.args);
+    }
+
+    @Override
+    public String toString() {
+        return "TextCommand{" +
+                "args=" + args +
+                "original_args=" + originalCommand.getArgs() +
+                "full_args=" + fullCommand.getArgs() +
+                '}';
     }
 }

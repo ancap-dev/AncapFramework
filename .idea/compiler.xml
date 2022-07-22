@@ -12,9 +12,12 @@
         <module name="WorldIteratorAPI" />
         <module name="AncapPluginAPI" />
         <module name="AncapPlugin" />
+        <module name="DatabaseAPI" />
         <module name="EventAPI" />
-        <module name="AncapMisc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AncapMisc" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

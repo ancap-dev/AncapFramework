@@ -6,6 +6,10 @@ public abstract class OperableEvent extends AncapEvent {
 
     private boolean operated;
 
+    public OperableEvent(boolean isAsync) {
+        super(isAsync);
+    }
+
     /**
      * @return Returns the fact the event is not alredy operated and set's it as operated in the same time.
      */

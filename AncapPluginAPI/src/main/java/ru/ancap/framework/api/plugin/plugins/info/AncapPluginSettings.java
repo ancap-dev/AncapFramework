@@ -1,7 +1,6 @@
 package ru.ancap.framework.api.plugin.plugins.info;
 
 import org.bukkit.configuration.ConfigurationSection;
-import ru.ancap.misc.strings.integer.AncapIntegerString;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,18 +20,15 @@ public class AncapPluginSettings {
     }
 
     public int getPluginId() {
-        return this.section
-                .getInt(Path.PLUGIN_ID);
+        return this.section.getInt(Path.PLUGIN_ID);
     }
 
     public List<String> getCommandList() {
-        return this.section
-                .getStringList(Path.COMMAND_LIST);
+        return this.section.getStringList(Path.COMMAND_LIST);
     }
 
     public List<String> getAliasesList(String commandName) {
-        ConfigurationSection section = this.section
-                .getConfigurationSection(Path.ALIASES_DOMAIN);
+        ConfigurationSection section = this.section.getConfigurationSection(Path.ALIASES_DOMAIN);
         if (section == null) return Collections.emptyList();
         return section.getStringList(commandName);
     }

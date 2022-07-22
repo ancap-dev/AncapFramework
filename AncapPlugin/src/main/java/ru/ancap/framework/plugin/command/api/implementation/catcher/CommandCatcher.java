@@ -15,6 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import ru.ancap.framework.api.command.commands.command.dispatched.InlineTextCommand;
+import ru.ancap.framework.api.command.commands.command.dispatched.LeveledCommand;
 import ru.ancap.framework.api.command.commands.command.dispatched.TextCommand;
 import ru.ancap.framework.api.command.commands.command.event.CommandDispatch;
 import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
@@ -35,7 +36,7 @@ public class CommandCatcher implements Listener, PacketListener {
     public void on(PlayerCommandPreprocessEvent event) {
         this.operateDispatch(
                 event,
-                event.getPlayer(), event.getMessage(),
+                event.getPlayer(), event.getMessage().substring(1),
                 this :: operateDispatch
         );
     }
@@ -49,7 +50,7 @@ public class CommandCatcher implements Listener, PacketListener {
         );
     }
 
-     private void operateDispatch(EventCommandForm form) {
+    private void operateDispatch(EventCommandForm form) {
         this.global.on(
                 new CommandDispatch(
                         form.sender,
@@ -66,12 +67,12 @@ public class CommandCatcher implements Listener, PacketListener {
         WrapperPlayClientTabComplete packet = new WrapperPlayClientTabComplete(event);
         InlineTextCommand inlineTextCommand = new InlineTextCommand(packet.getText());
         if (!this.rule.isOperate(inlineTextCommand)) return;
-        if (inlineTextCommand.isRaw()) return;
         event.setCancelled(true);
         this.global.on(
                 new PacketCommandWrite(
-                        packet,
                         (Player) event.getPlayer(),
+                        packet.getTransactionId().orElse(0),
+                        inlineTextCommand,
                         inlineTextCommand
                 )
         );
@@ -94,9 +95,6 @@ public class CommandCatcher implements Listener, PacketListener {
         return this.from(new Form(
                 form.sender,
                 new ArrayList<>(Arrays.asList(form.command.split(" ")))
-                        .stream()
-                        .skip(1)
-                        .toList()
         ));
     }
 
@@ -110,7 +108,7 @@ public class CommandCatcher implements Listener, PacketListener {
 
     private record Form(CommandSender sender, List<String> arguments) {}
 
-    private record EventCommandForm(Cancellable event, CommandSender sender, TextCommand command) {}
+    private record EventCommandForm(Cancellable event, CommandSender sender, LeveledCommand command) {}
 
     private record CancellableAbstraction(@Delegate CancellableEvent event) implements Cancellable {
 

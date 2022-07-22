@@ -24,7 +24,7 @@ public final class InlineTextCommand implements LeveledCommand {
     @Delegate
     public TextCommand getCompletedCommand() {
         if (completedCommand == null) {
-            List<ParseLexem> lexems = this.parsed();
+            List<ParseLexem> lexems = new ArrayList<>(this.parsed());
             int lastIndex = lexems.size() - 1;
             if (!lexems.get(lastIndex).finished) {
                 lexems.remove(lastIndex);
@@ -40,7 +40,7 @@ public final class InlineTextCommand implements LeveledCommand {
 
     public int hotArgumentStart() {
         if (!this.hot()) {
-            return this.line.length()-1;
+            return this.line.length();
         }
         int index = this.line.length()-1;
         while (line.charAt(index) != ' ') {
@@ -77,11 +77,11 @@ public final class InlineTextCommand implements LeveledCommand {
             }
             this.parsed = lexems;
         }
-        return this.parsed;
+        return List.copyOf(this.parsed);
     }
 
     public int hotArgumentEnd() {
-        return this.line.length()-1;
+        return this.line.length();
     }
 
 

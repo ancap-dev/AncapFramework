@@ -1,12 +1,9 @@
 package ru.ancap.framework.api.plugin.plugins;
 
-import javafx.util.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
 import ru.ancap.framework.api.loader.YamlLocaleLoader;
-import ru.ancap.framework.api.plugin.plugins.commands.CommandCenter;
 import ru.ancap.framework.api.plugin.plugins.config.StreamConfig;
 
 import javax.annotation.OverridingMethodsMustInvokeSuper;
@@ -15,14 +12,42 @@ import java.util.List;
 
 public abstract class AncapMinimalisticPlugin extends JavaPlugin {
 
-    private static CommandCenter commandCenter;
+    private static Ancap ancap;
 
     @OverridingMethodsMustInvokeSuper
     @Override
     public void onEnable() {
         super.onEnable();
-        this.registerAutoRegisteredListeners();
-        this.registerAutoRegisteredCommandExecutors();
+        this.createPluginFolder();
+        this.saveDefaultConfig();
+    }
+
+    protected void onCoreLoad() {
+        // to override it in core plugin
+    }
+
+    protected Ancap getAncap() {
+        return ancap;
+    }
+
+    protected void unloadAncap() {
+        if (AncapMinimalisticPlugin.ancap == null) {
+            throw new IllegalStateException("Ancap isn't loaded!");
+        }
+        AncapMinimalisticPlugin.ancap = null;
+    }
+
+    protected void loadAncap(Ancap ancap) {
+        if (AncapMinimalisticPlugin.ancap != null) {
+            throw new IllegalStateException("Ancap already loaded!");
+        }
+        AncapMinimalisticPlugin.ancap = ancap;
+    }
+
+    private void createPluginFolder() {
+        if (!this.getDataFolder().exists()) {
+            this.getDataFolder().mkdirs();
+        }
     }
 
     protected void loadLocale(String fileName) {
@@ -30,19 +55,10 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
                 new StreamConfig(
                         this.getResource(fileName)
                 )
-        ).load();
+        ).run();
     }
 
-    private void registerAutoRegisteredCommandExecutors() {
-        for (Pair<String, CommandOperator> command : this.commands()) {
-            this.registerExecutor(
-                    command.getKey(),
-                    command.getValue()
-            );
-        }
-    }
-
-    private void registerAutoRegisteredListeners() {
+    protected void registerAutoRegisteredListeners() {
         for (Listener listener : this.listeners()) {
             this.registerEventsListener(listener);
         }
@@ -55,33 +71,15 @@ public abstract class AncapMinimalisticPlugin extends JavaPlugin {
         );
     }
 
-    protected void registerCommandCenter(CommandCenter commandCenter) {
-        if (AncapMinimalisticPlugin.commandCenter != null) {
-            throw new IllegalStateException("Command center is already registered!");
-        }
-        AncapMinimalisticPlugin.commandCenter = commandCenter;
-    }
-
-    protected void registerExecutor(String commandName, CommandOperator executor) {
-        commandCenter.setExecutor(commandName, executor);
-    }
-
     protected ResourceSource getResourceSource() {
-        return this.newResourceSource(true);
+        return ancap.newResourceSource(this, true);
     }
 
     protected ResourceSource getSoftResourceSource() {
-        return this.newResourceSource(false);
-    }
-
-    private ResourceSource newResourceSource(boolean saveFiles) {
-        return new AncapPluginResourceSource(this, saveFiles);
+        return ancap.newResourceSource(this, false);
     }
 
     protected List<Listener> listeners() {
-        return new ArrayList<>();
-    }
-    protected List<Pair<String, CommandOperator>> commands() {
         return new ArrayList<>();
     }
 }
