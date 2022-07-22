@@ -37,4 +37,4 @@
 
 # Вики
 
-Другие языки, а также гайд для самых маленьких по использованию фреймворка можно найти на [вики](https://github.com/ancap-dev/AncapFramework/wiki).
+Всю информацию о фреймворке можно найти на [вики](https://github.com/ancap-dev/AncapFramework/wiki).
