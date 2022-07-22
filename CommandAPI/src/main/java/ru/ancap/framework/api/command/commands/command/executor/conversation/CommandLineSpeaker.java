@@ -3,7 +3,7 @@ package ru.ancap.framework.api.command.commands.command.executor.conversation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import ru.ancap.framework.api.command.commands.command.TabCompletion;
+import ru.ancap.framework.api.command.commands.command.tab.TabCompletion;
 
 import java.util.List;
 

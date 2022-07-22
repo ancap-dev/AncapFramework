@@ -13,15 +13,15 @@ public class LanguagesOperator implements LanguagesData {
     @Override
     @NotNull
     public String languageCode(String speakerId, String defaultCode) {
-        SpeakerModel model = repository.get(speakerId);
+        SpeakerModel model = repository.read(speakerId);
         if (model == null) {
             return defaultCode;
         }
-        return model.getLanguageCode();
+        return model.languageCode();
     }
 
     @Override
     public void setPlayerLanguage(String speakerId, String languageCode) {
-        repository.write(new SpeakerModel(speakerId, languageCode));
+        repository.update(new SpeakerModel(speakerId, languageCode));
     }
 }

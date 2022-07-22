@@ -10,7 +10,9 @@ import ru.ancap.framework.api.plugin.plugins.AncapPlugin;
 import ru.ancap.framework.api.plugin.plugins.commands.CommandCenter;
 import ru.ancap.framework.api.plugin.plugins.exception.CommandNotRegisteredException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -18,16 +20,20 @@ import java.util.function.Consumer;
 public class AsyncCommandCenter implements CommandCenter, CommandOperator, OperateRule {
 
     private final Map<String, CommandOperator> executeRules = new HashMap<>();
-    private final Iterable<AncapPlugin> plugins;
 
-    public void initialize() {
-        for (AncapPlugin plugin : plugins) {
-            for (String name : plugin.getSettings().getCommandList()) {
-                CommandOperator executor = new CommandOperator(){};
-                this.executeRules.put(name, executor);
-                for (String additional : plugin.getSettings().getAliasesList(name)) {
-                    this.executeRules.put(additional, executor);
-                }
+    private final Map<String, List<String>> aliasesMap = new HashMap<>();
+
+    @Override
+    public void initialize(AncapPlugin plugin) {
+        for (String name : plugin.getSettings().getCommandList()) {
+            CommandOperator executor = new CommandOperator(){};
+            this.executeRules.put(name, executor);
+            this.aliasesMap.put(name, new ArrayList<>());
+            for (String additional : plugin.getSettings().getAliasesList(name)) {
+                List<String> aliases = this.aliasesMap.get(name);
+                aliases.add(additional);
+                this.aliasesMap.put(name, aliases);
+                this.executeRules.put(additional, executor);
             }
         }
     }
@@ -38,6 +44,9 @@ public class AsyncCommandCenter implements CommandCenter, CommandOperator, Opera
         if (previous == null) {
             throw new CommandNotRegisteredException("Command "+commandName+" must be registered in ancapplugin.yml to set its executor!");
         }
+        for (String alias : this.aliasesMap.get(commandName)) {
+            this.executeRules.put(alias, executor);
+        }
         this.executeRules.put(commandName, executor);
     }
 
@@ -45,11 +54,11 @@ public class AsyncCommandCenter implements CommandCenter, CommandOperator, Opera
     public void on(CommandDispatch dispatch) {
         this.operate(
                 dispatch.dispatched(),
-                commandForm -> {
-                    commandForm.executor.on(
-                            new CommandDispatch(dispatch.sender(), dispatch.dispatched())
-                    );
-                }
+                commandForm -> commandForm.executor.on(
+                        new CommandDispatch(
+                                dispatch.sender(),
+                                commandForm.command
+                ))
         );
     }
 
@@ -57,25 +66,25 @@ public class AsyncCommandCenter implements CommandCenter, CommandOperator, Opera
     public void on(CommandWrite write) {
         this.operate(
                 write.getWritten(),
-                commandForm -> {
-                    commandForm.executor.on(
-                            new CommandWrite(write.getSpeaker(), write.getWritten())
-                    );
-                }
+                commandForm -> commandForm.executor.on(
+                        new CommandWrite(
+                                write.getSpeaker(),
+                                commandForm.command
+                        )
+                )
         );
     }
 
 
     private void operate(LeveledCommand command, Consumer<CommandForm> consumer) {
         String key = command.nextArgument();
-        command = command.withoutArgument();
-        LeveledCommand finalCommand = command;
-        new Thread(() -> {
-            consumer.accept(new CommandForm(
-                    finalCommand,
-                    this.executeRules.get(key)
-            ));
-        }).start();
+        LeveledCommand finalCommand = command.withoutArgument();
+        new Thread(() -> consumer.accept(
+                new CommandForm(
+                        finalCommand,
+                        this.executeRules.get(key)
+                )
+        )).start();
 
     }
 

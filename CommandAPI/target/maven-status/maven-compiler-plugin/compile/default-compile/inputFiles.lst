@@ -7,12 +7,14 @@ C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\com
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\finite\FiniteCommandTarget.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\CommandDelegator.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\finite\pattern\CommandEventPattern.java
+C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\tab\Tab.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\settings\ClassicDelegatorSettings.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\CommandEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\NotEnoughArgsEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\executor\conversation\CommandLineSpeaker.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\settings\DelegatorSettings.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\SubCommand.java
+C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\tab\TooltipTab.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\Raw.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\UnknownCommandEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\finite\Adviser.java
@@ -25,7 +27,6 @@ C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\com
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\OperableEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\executor\CommandOperator.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\rule\delegate\operate\OperateRule.java
-C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\TabCompletion.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\event\classic\DescribedIncorrectArgsEvent.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\rule\CommandDelegateRule.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\finite\pattern\ArgumentCutter.java
@@ -35,3 +36,4 @@ C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\com
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\executor\CommandSpeaker.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\event\CommandWrite.java
 C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\delegator\subcommand\rule\provide\CommandProvidePattern.java
+C:\сурцы\AncapFramework\CommandAPI\src\main\java\ru\ancap\framework\api\command\commands\command\tab\TabCompletion.java

@@ -9,11 +9,11 @@ import ru.ancap.framework.api.language.Language;
 import java.util.Set;
 
 @AllArgsConstructor
-public class YamlLocaleLoader {
+public class YamlLocaleLoader implements Runnable {
 
     private final ConfigurationSection section;
 
-    public void load() {
+    public void run() {
         String languageCode = this.section.getString("language");
         if (languageCode == null) {
             throw new LocaleLoaderException("Can't load locale without language code!");

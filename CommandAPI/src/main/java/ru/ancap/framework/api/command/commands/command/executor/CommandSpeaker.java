@@ -2,8 +2,9 @@ package ru.ancap.framework.api.command.commands.command.executor;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import ru.ancap.framework.api.command.commands.command.TabCompletion;
+import ru.ancap.framework.api.command.commands.command.tab.TabCompletion;
 import ru.ancap.framework.api.command.commands.command.event.CommandWrite;
+import ru.ancap.framework.api.command.commands.command.tab.TooltipTab;
 
 /**
  * Next-gen CommandExecutor - больше не является callable, а значит, может быть полностью (двусторонне) асинхронным. Зачем это нужно?
@@ -33,7 +34,7 @@ public interface CommandSpeaker {
             write.getSpeaker().sendTooltipTabs(
                     Bukkit.getOnlinePlayers()
                             .stream()
-                            .map(player -> new TabCompletion(
+                            .map(player -> (TabCompletion) new TooltipTab(
                                     player.getName(),
                                     Component.text(player.getHealth()+" §c♥")
                             ))

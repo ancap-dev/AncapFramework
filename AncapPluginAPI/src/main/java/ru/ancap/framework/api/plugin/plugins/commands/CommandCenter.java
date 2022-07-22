@@ -1,6 +1,7 @@
 package ru.ancap.framework.api.plugin.plugins.commands;
 
 import ru.ancap.framework.api.command.commands.command.executor.CommandOperator;
+import ru.ancap.framework.api.plugin.plugins.AncapPlugin;
 import ru.ancap.framework.api.plugin.plugins.exception.CommandNotRegisteredException;
 
 /**
@@ -9,6 +10,7 @@ import ru.ancap.framework.api.plugin.plugins.exception.CommandNotRegisteredExcep
  */
 public interface CommandCenter {
 
+    void initialize(AncapPlugin plugin);
     void setExecutor(String commandName, CommandOperator executor) throws CommandNotRegisteredException;
 
 }

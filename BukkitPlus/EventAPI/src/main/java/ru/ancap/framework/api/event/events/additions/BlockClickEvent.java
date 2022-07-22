@@ -11,9 +11,9 @@ public class BlockClickEvent extends Event implements Cancellable {
 
     public static final HandlerList handlers = new HandlerList();
 
-    private @NotNull Cancellable event;
-    private @NotNull Block block;
-    private @NotNull Player clicker;
+    private final @NotNull Cancellable event;
+    private final @NotNull Block block;
+    private final @NotNull Player clicker;
 
     public BlockClickEvent(@NotNull Cancellable event, @NotNull Block block, @NotNull Player player) {
         this.event = event;

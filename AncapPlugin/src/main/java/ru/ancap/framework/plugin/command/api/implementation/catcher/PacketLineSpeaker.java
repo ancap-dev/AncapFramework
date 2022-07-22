@@ -5,9 +5,9 @@ import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerTa
 import lombok.experimental.Delegate;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import ru.ancap.framework.api.command.commands.command.TabCompletion;
 import ru.ancap.framework.api.command.commands.command.dispatched.InlineTextCommand;
 import ru.ancap.framework.api.command.commands.command.executor.conversation.CommandLineSpeaker;
+import ru.ancap.framework.api.command.commands.command.tab.TabCompletion;
 
 import java.util.List;
 
@@ -51,10 +51,19 @@ public class PacketLineSpeaker implements CommandLineSpeaker {
                 .toList();
         this.sendTab(
                 tabs.stream()
-                        .map(tabCompletion -> new WrapperPlayServerTabComplete.CommandMatch(
-                                tabCompletion.completion(),
-                                tabCompletion.tooltip()
-                        ))
+                        .map(tabCompletion -> {
+                            WrapperPlayServerTabComplete.CommandMatch[] match = new WrapperPlayServerTabComplete.CommandMatch[1];
+                            tabCompletion.getTooltipState().ifPresentOrElse(
+                                    component -> match[0] = new WrapperPlayServerTabComplete.CommandMatch(
+                                            tabCompletion.completion(),
+                                            component
+                                    ),
+                                    () -> match[0] = new WrapperPlayServerTabComplete.CommandMatch(
+                                            tabCompletion.completion()
+                                    )
+                            );
+                            return match[0];
+                        })
                         .toList()
         );
     }
@@ -62,7 +71,9 @@ public class PacketLineSpeaker implements CommandLineSpeaker {
     private void sendTab(List<WrapperPlayServerTabComplete.CommandMatch> matches) {
         WrapperPlayServerTabComplete complete = new WrapperPlayServerTabComplete(
                 transactionID,
-                new WrapperPlayServerTabComplete.CommandRange(command.hotArgumentStart(), command.hotArgumentEnd()),
+                // Здесь я добавляю +1 к каждому значению, потому что до этого был убран из строки первый символ (слэш), но клиент всё ещё принимает значения
+                // пакетов как со слэшем. Это костыль, но его фикс довольно сложный, пока что пусть будет так, потом возможно переделаю внутреннюю структуру
+                new WrapperPlayServerTabComplete.CommandRange(command.hotArgumentStart()+1, command.hotArgumentEnd()+1),
                 matches
         );
         PacketEvents.getAPI().getPlayerManager().sendPacketSilently(player, complete);

@@ -3,7 +3,15 @@ description: "Runtime part of AncapFramework"
 authors: [ PukPukov ]
 website: framework.ancap-eco.ru
 
+depend:
+  - packetevents
+
 main: ru.ancap.framework.plugin.AncapLibrary
+
+commands:
+  language:
+    aliases:
+      - lang
 
 version: '${project.version}'
 prefix: AncapPlugin

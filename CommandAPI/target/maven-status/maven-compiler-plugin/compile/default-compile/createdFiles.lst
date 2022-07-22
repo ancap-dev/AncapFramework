@@ -7,6 +7,7 @@ ru\ancap\framework\api\event\classic\IncorrectArgsEvent.class
 ru\ancap\framework\api\command\commands\command\executor\CommandSpeaker.class
 ru\ancap\framework\api\command\commands\delegator\subcommand\rule\delegate\operate\OperateRule.class
 ru\ancap\framework\api\command\commands\command\event\CommandDispatch.class
+ru\ancap\framework\api\command\commands\command\tab\TooltipTab.class
 ru\ancap\framework\api\command\commands\finite\pattern\CommandEventPattern.class
 ru\ancap\framework\api\command\commands\command\executor\CommandExecutor.class
 ru\ancap\framework\api\command\commands\delegator\subcommand\rule\provide\CommandProvidePattern.class
@@ -21,7 +22,7 @@ ru\ancap\framework\api\event\CommandEvent.class
 ru\ancap\framework\api\command\commands\finite\pattern\ArgumentTransformer$Transformer.class
 ru\ancap\framework\api\command\commands\delegator\subcommand\rule\delegate\DelegatePattern.class
 ru\ancap\framework\api\command\commands\command\dispatched\exception\NoNextArgumentException.class
-ru\ancap\framework\api\command\commands\command\TabCompletion.class
+ru\ancap\framework\api\command\commands\command\tab\TabCompletion.class
 ru\ancap\framework\api\event\classic\UnknownCommandEvent.class
 ru\ancap\framework\api\command\commands\command\executor\conversation\CommandLineSpeaker.class
 ru\ancap\framework\api\event\classic\NotEnoughPermsEvent.class
@@ -41,6 +42,7 @@ ru\ancap\framework\api\command\commands\finite\FiniteCommandTarget.class
 ru\ancap\framework\api\command\commands\finite\pattern\ArgumentTransformer$DescribedTransformationException.class
 ru\ancap\framework\api\command\commands\finite\Adviser.class
 ru\ancap\framework\api\command\commands\finite\pattern\SingleArgumenter.class
+ru\ancap\framework\api\command\commands\command\tab\Tab.class
 ru\ancap\framework\api\command\commands\finite\pattern\ArgumentTransformer.class
 ru\ancap\framework\api\command\commands\delegator\settings\DelegatorSettings.class
 ru\ancap\framework\api\event\classic\DescribedIncorrectArgsEvent.class
